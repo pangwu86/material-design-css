@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDCSS Button</title>
+    <!--依赖-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/font-md/css/material-design-iconic-font.css">
+    <script src="../rs/js/jquery.js"></script>
+    <script src="../rs/js/jquery.easing.js"></script>
+    <!--语法高亮-->
+    <link rel='stylesheet' type='text/css' href='../rs/css/shCoreDefault.css'/>
+    <!--MDCSS-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/md.css">
+    <script src="../rs/css/mdcss/md.js"></script>
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <style>
+        .row:not(.fab) .md-button {
+            margin: 0 16px;
+        }
+
+        .fab-1 {
+            right: 300px;
+            bottom: 24px;
+        }
+
+        .fab-2 {
+            top: 24px;
+            right: 300px;
+        }
+
+        .fab-3 {
+            left: 300px;
+            bottom: 24px;
+        }
+
+        .fab-4 {
+            top: 24px;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+<h1>Button</h1>
+
+<div class="example">
+    <div class="row">
+        <button class="md-button flat-button">
+            <span class="md-button-label">Btn1</span>
+        </button>
+        <button class="md-button flat-button is-primary">
+            <span class="md-button-label">primary</span>
+        </button>
+        <button class="md-button flat-button is-secondary">
+            <span class="md-button-label">secondary</span>
+        </button>
+        <button class="md-button flat-button is-disabled">
+            <span class="md-button-label">disabled</span>
+        </button>
+    </div>
+    <div class="row">
+        <button class="md-button raised-button">
+            <span class="md-button-label">Btn1</span>
+        </button>
+        <button class="md-button raised-button is-primary">
+            <span class="md-button-label">primary</span>
+        </button>
+        <button class="md-button raised-button is-secondary">
+            <span class="md-button-label">secondary</span>
+        </button>
+        <button class="md-button raised-button is-disabled">
+            <span class="md-button-label">disabled</span>
+        </button>
+    </div>
+    <div class="row fab">
+        <button class="md-button fab-button fab-1">
+            <div class="fab-button-inner">
+                <i class="md-icon md-add"></i>
+            </div>
+            <ul class="top">
+                <li class="md-button fab-button-mini fab-pos-1">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-mode-edit"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-2">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-insert-link"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-3">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-format-line-spacing"></i>
+                    </div>
+                </li>
+            </ul>
+        </button>
+
+        <button class="md-button fab-button fab-2">
+            <div class="fab-button-inner">
+                <i class="md-icon md-add"></i>
+            </div>
+            <ul class="left">
+                <li class="md-button fab-button-mini fab-pos-1">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-mode-edit"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-2">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-insert-link"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-3">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-format-line-spacing"></i>
+                    </div>
+                </li>
+            </ul>
+        </button>
+
+        <button class="md-button fab-button fab-3">
+            <div class="fab-button-inner">
+                <i class="md-icon md-add"></i>
+            </div>
+            <ul class="right">
+                <li class="md-button fab-button-mini fab-pos-1">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-mode-edit"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-2">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-insert-link"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-3">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-format-line-spacing"></i>
+                    </div>
+                </li>
+            </ul>
+        </button>
+
+        <button class="md-button fab-button fab-4">
+            <div class="fab-button-inner">
+                <i class="md-icon md-add"></i>
+            </div>
+            <ul class="bottom">
+                <li class="md-button fab-button-mini fab-pos-1">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-mode-edit"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-2">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-insert-link"></i>
+                    </div>
+                </li>
+                <li class="md-button fab-button-mini fab-pos-3">
+                    <div class="fab-button-inner">
+                        <i class="md-icon md-format-line-spacing"></i>
+                    </div>
+                </li>
+            </ul>
+        </button>
+    </div>
+</div>
+
+<div class="example-code">
+    <div class="row">
+        TODO
+    </div>
+    <div class="row">
+        TODO
+    </div>
+    <div class="row">
+        TODO
+    </div>
+</div>
+</body>
+</html>

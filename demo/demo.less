@@ -1,0 +1,74 @@
+@import "../rs/css/mdcss/md";
+
+body {
+  overflow-y: auto;
+}
+
+h1 {
+  font-size: @font-size-h1;
+  text-align: center;
+  margin-top: 24px;
+}
+
+._ex_block {
+  position: relative;
+  .paper;
+  .z-depth-2;
+  .rounded;
+
+  width: 960px;
+  margin: 24px auto;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+._ex_label {
+  display: block;
+  position: absolute;
+  top: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: @min-black;
+  background: @transparent;
+  font-weight: bold;
+  border: 1px solid @divider-color;
+  border-left: none;
+  border-top: none;
+  text-align: center;
+  width: 80px;
+}
+
+.example {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+    
+  ._ex_block;
+
+  &:before {
+    ._ex_label;
+    content: 'Example';
+  }
+
+}
+
+.example-code {
+
+  ._ex_block;
+
+  &:before {
+    ._ex_label;
+    content: 'Code';
+  }
+}
+
+.row {
+  padding: 24px;
+  text-align: center;
+
+  &.fab {
+    position: relative;
+    height: 370px;
+  }
+}
