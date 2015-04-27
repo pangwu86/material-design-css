@@ -5,21 +5,21 @@
 
 控件列表:
 
-    + Buttons
-    + Cards
-    + Chips
-    + Data tables
-    + Dialogs
-    + Dividers
-    + Grid lists
-    + Lists
-    + Menus
-    + Pickers
-    + Progress
-    + Sliders
-    + Tabs
-    + Text Fields
-    + Toolbars
-    + Tooltips
++ Buttons
++ Cards
++ Chips
++ Data tables
++ Dialogs
++ Dividers
++ Grid lists
++ Lists
++ Menus
++ Pickers
++ Progress
++ Sliders
++ Tabs
++ Text Fields
++ Toolbars
++ Tooltips
     
 因为Web页面的交换与APP的交换存在一定差异, 所以控件实现按照优先Web段, 正常类APP响应.
