@@ -81,3 +81,6 @@ abbr,
 acronym {
   border: 0;
 }
+input[type=password] {
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}

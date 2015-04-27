@@ -13,7 +13,6 @@
   // 下面两个一起用, 在下方有6px的空隙, FIXME
   //display: inline-block;
   //overflow:hidden;
-
   display: inline-table;
   overflow: hidden;
 
@@ -38,6 +37,7 @@
     color: inherit;
   }
 }
+
 // 可以触发涟漪效果的
 
 .ripple-button {
@@ -220,7 +220,6 @@
           li.fab-pos-@{i} {
             @ms: @fab-mini-start - @fab-mini-outsize * @i;
             .user-transform(@ts: translate3d(0, @ms, 0));
-            transition-delay: 0.1s * @i;
           }
           .generate-li(@i - 1); // next iteration
         }
@@ -236,7 +235,6 @@
           li.fab-pos-@{i} {
             @ms: @fab-mini-start - @fab-mini-outsize * @i;
             .user-transform(@ts: translate3d(0, -@ms, 0));
-            transition-delay: 0.1s * @i;
           }
           .generate-li(@i - 1); // next iteration
         }
@@ -256,7 +254,6 @@
           li.fab-pos-@{i} {
             @ms: @fab-mini-start - @fab-mini-outsize * @i;
             .user-transform(@ts: translate3d(@ms, 0, 0));
-            transition-delay: 0.1s * @i;
           }
           .generate-li(@i - 1); // next iteration
         }
@@ -276,7 +273,6 @@
           li.fab-pos-@{i} {
             @ms: @fab-mini-start - @fab-mini-outsize * @i;
             .user-transform(@ts: translate3d(-@ms, 0, 0));
-            transition-delay: 0.1s * @i;
           }
           .generate-li(@i - 1); // next iteration
         }

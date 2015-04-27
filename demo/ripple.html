@@ -22,8 +22,8 @@
         .bl {
             display: block;
             margin: 16px auto;
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             cursor: pointer;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
         }
@@ -33,7 +33,7 @@
         }
 
         .bl-2 {
-            width: 200px;
+            width: 400px;
         }
 
         .bl-2 .touch-ripple {
@@ -41,21 +41,30 @@
         }
 
         .bl-3 {
-            border-radius: 50%;
-        }
+             border-radius: 50%;
+         }
 
         .bl-3 .touch-ripple {
             background: rgba(0, 255, 0, 0.5);
         }
 
         .bl-4 {
+            border-radius: 50%;
+            overflow: inherit;
+        }
+
+        .bl-4 .touch-ripple {
+            background: rgba(0, 255, 0, 0.5);
+        }
+
+        .bl-5 {
             width: 0;
             height: 0;
             border: 100px solid transparent;
             border-bottom: 100px solid #000;
         }
 
-        .bl-4 .touch-ripple {
+        .bl-5 .touch-ripple {
             background: rgba(0, 0, 255, 0.5);
         }
 
@@ -65,11 +74,13 @@
 <h1>Ripple-Effect</h1>
 
 <div class="example">
+    <div class="tip">点点下面的"块", 会有水波纹效果</div>
     <div class="row">
         <div class="bl bl-1 ripple-button"></div>
         <div class="bl bl-2 ripple-button"></div>
         <div class="bl bl-3 ripple-button"></div>
         <div class="bl bl-4 ripple-button"></div>
+        <div class="bl bl-5 ripple-button"></div>
     </div>
 </div>
 

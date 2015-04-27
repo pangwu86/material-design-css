@@ -43,11 +43,17 @@
             left: 300px;
         }
     </style>
+    <script>
+        $(document).ready(function () {
+            $('#btn1').focus();
+        });
+    </script>
 </head>
 <body>
 <h1>Button</h1>
 
 <div class="example">
+    <div class="tip">记得试试tab键, 会有focus的效果</div>
     <div class="row">
         <button class="md-button flat-button">
             <span class="md-button-label">Btn1</span>
@@ -63,7 +69,7 @@
         </button>
     </div>
     <div class="row">
-        <button class="md-button raised-button">
+        <button class="md-button raised-button" id="btn1">
             <span class="md-button-label">Btn1</span>
         </button>
         <button class="md-button raised-button is-primary">

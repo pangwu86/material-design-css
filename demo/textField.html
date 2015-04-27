@@ -21,11 +21,17 @@
     <style>
 
     </style>
+    <script>
+        $(document).ready(function () {
+            $('input[type=email]').focus();
+        });
+    </script>
 </head>
 <body>
 <h1>TextField</h1>
 
 <div class="example">
+    <div class="tip">试试tab键, 可以看到"切入切出"效果</div>
     <div class="row">
         <div class="md-text-filed has-float-label">
             <label>Email</label>
