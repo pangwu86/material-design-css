@@ -344,13 +344,50 @@ input[type=password] {
     -webkit-transform: scale(0.85);
   }
 }
+.ripple-circle-mini {
+  position: absolute;
+  border-radius: 50%;
+}
+.ripple-circle-mini.touch-ripple {
+  animation: touch-ripple-mini-animation 2s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-animation: touch-ripple-mini-animation 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ripple-circle-mini.focus-ripple {
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all transform cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all transform cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -ms-transition: all transform cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all transform cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: all transform cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  animation: focus-ripple-animation 1.5s ease 0s infinite;
+  -webkit-animation: focus-ripple-animation 1.5s ease 0s infinite;
+}
+@keyframes focus-ripple-animation {
+  0%,
+  100% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(0.85);
+  }
+}
+@-webkit-keyframes focus-ripple-animation {
+  0%,
+  100% {
+    -webkit-transform: scale(0.75);
+  }
+  50% {
+    -webkit-transform: scale(0.85);
+  }
+}
 @keyframes touch-ripple-animation {
   from {
     transform: scale(0);
     opacity: 1;
   }
   to {
-    transform: scale(3);
+    transform: scale(3.5);
     opacity: 0;
   }
 }
@@ -360,7 +397,27 @@ input[type=password] {
     opacity: 1;
   }
   to {
-    -webkit-transform: scale(3);
+    -webkit-transform: scale(3.5);
+    opacity: 0;
+  }
+}
+@keyframes touch-ripple-mini-animation {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes touch-ripple-mini-animation {
+  from {
+    -webkit-transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: scale(3.5);
     opacity: 0;
   }
 }
