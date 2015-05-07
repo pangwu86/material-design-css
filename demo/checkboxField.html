@@ -18,13 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/md.css">
     <script src="../rs/css/mdcss/md.js"></script>
     <link rel="stylesheet" type="text/css" href="demo.css">
-    <style>
-
-    </style>
     <script>
-        $(document).ready(function () {
-            $('input[type=email]').focus();
-        });
     </script>
 </head>
 <body>
@@ -33,25 +27,13 @@
 <div class="example">
     <div class="tip">试试tab键, 可以看到"切入切出"效果</div>
     <div class="row">
-        <div class="md-text-field has-float-label">
-            <label>Email</label>
-            <input type="email" name="email" nm="邮箱">
-            <hr class="underline">
-            <hr class="underline-focus">
-            <div class="err-tip">无效的邮箱</div>
-        </div>
-        <div class="md-text-field">
-            <input type="text" name="nm" nm="用户名">
-            <hr class="underline">
-            <hr class="underline-focus">
-            <div class="err-tip">无效的用户名</div>
-        </div>
-        <div class="md-text-field has-float-label has-err">
-            <label>Password</label>
-            <input type="text" name="pwd" onfocus="this.type='password';" nm="密码">
-            <hr class="underline">
-            <hr class="underline-focus">
-            <div class="err-tip">无效的密码</div>
+        <div class="md-checkbox-field check-left">
+            <label>选中</label>
+            <div class="checkbox-wrap">
+                <i class="md-icon checked"></i>
+                <i class="md-icon unchecked"></i>
+                <input name="rememberMe" type="checkbox">
+            </div>
         </div>
     </div>
 </div>

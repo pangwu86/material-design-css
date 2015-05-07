@@ -497,17 +497,17 @@ input[type=password] {
   background: rgba(255, 64, 129, 0.2);
 }
 .flat-button.is-secondary {
-  color: #2196f3;
+  color: #00bcd4;
 }
 .flat-button.is-secondary:hover,
 .flat-button.is-secondary.is-focus {
-  background-color: #bcdffb;
+  background-color: #78f0ff;
 }
 .flat-button.is-secondary .touch-ripple {
-  background: rgba(33, 150, 243, 0.2);
+  background: rgba(0, 188, 212, 0.2);
 }
 .flat-button.is-secondary .focus-ripple {
-  background: rgba(33, 150, 243, 0.2);
+  background: rgba(0, 188, 212, 0.2);
 }
 .raised-button {
   letter-spacing: 0;
@@ -556,11 +556,11 @@ input[type=password] {
 }
 .raised-button.is-secondary {
   color: #ffffff;
-  background-color: #2196f3;
+  background-color: #00bcd4;
 }
 .raised-button.is-secondary:hover,
 .raised-button.is-secondary.is-focus {
-  background-color: #0e8df2;
+  background-color: #00aac0;
 }
 .raised-button.is-secondary .touch-ripple {
   background: rgba(255, 255, 255, 0.35);
@@ -1458,7 +1458,7 @@ input[type=password] {
   position: relative;
   width: 100%;
   height: 48px;
-  background-color: #2196f3;
+  background-color: #00bcd4;
   padding-right: 48px;
   padding-left: 48px;
   text-align: left;
@@ -1568,7 +1568,7 @@ input[type=password] {
   margin: 0;
   border: none;
   border-bottom: solid 1px rgba(0, 0, 0, 0.12);
-  border-color: #2196f3;
+  border-color: #00bcd4;
   border-bottom-width: 2px;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
@@ -1600,7 +1600,7 @@ input[type=password] {
   -ms-transform: scale(0.75) translate3d(0, -18px, 0);
   -o-transform: scale(0.75) translate3d(0, -18px, 0);
   transform: scale(0.75) translate3d(0, -18px, 0);
-  color: #2196f3;
+  color: #00bcd4;
 }
 .md-text-field.is-focus input {
   opacity: 1;
@@ -1674,10 +1674,10 @@ input[type=password] {
   cursor: pointer;
 }
 .md-checkbox-field .checkbox-wrap .touch-ripple {
-  background: #2196f3;
+  background: #00bcd4;
 }
 .md-checkbox-field .checkbox-wrap .focus-ripple {
-  background: rgba(33, 150, 243, 0.2);
+  background: rgba(0, 188, 212, 0.2);
 }
 .md-checkbox-field .checkbox-wrap input[type=checkbox] {
   width: 100%;
@@ -1689,7 +1689,7 @@ input[type=password] {
   position: absolute;
   right: 12px;
   top: 12px;
-  color: #2196f3;
+  color: #00bcd4;
   -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
