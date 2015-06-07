@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDCSS</title>
+    <!--依赖-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../rs/css/font-md/css/material-design-iconic-font.css">
+    <script src="../rs/js/jquery.js"></script>
+    <script src="../rs/js/jquery.easing.js"></script>
+    <script src="../rs/js/underscore.js"></script>
+    <script src="../rs/js/zhttp.js"></script>
+    <script src="../rs/js/zutil.js"></script>
+    <!-- 当前页面-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/md.css">
+    <script src="../rs/css/mdcss/md.js"></script>
+    <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/page/home.css">
+    <script src="../rs/css/mdcss/page/home.js"></script>
+    <script>
+        // home页的配置信息
+        _md_page_home_ = {
+            profile: {
+                noprofile: true
+            },
+            page_setting: {
+                title: "MDCSS Demo",
+                page_dft: "/",
+                page_rs: "."
+            },
+            nav_user: [],
+            nav_main: [{
+                label: 'button',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/button.html',
+                page: true
+            }, {
+                label: 'textField',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/textField.html',
+                page: true
+            }, {
+                label: 'checkboxField',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/checkboxField.html',
+                page: true
+            }, {
+                label: 'tab',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/tab.html',
+                page: true
+            }, {
+                label: 'table',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/table.html',
+                page: true
+            }, {
+                label: 'ripple',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/ripple.html',
+                page: true
+            }, {
+                label: 'paper',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/paper.html',
+                page: true
+            }, {
+                label: 'loading',
+                icon: ' md-pages',
+                type: 'url',
+                url: '/loading.html',
+                page: true
+            }],
+            actions: {
+                'login': function () {
+                    alert('暂时不提供该服务');
+                }
+            },
+            closeQuick: false
+        }
+    </script>
+</head>
+<body>
+<!--主菜单-->
+<div id="md-page-header">
+    <!--左边菜单-->
+    <ul class="mp-header-left clearfix nav-btn-group">
+        <li>
+            <a href="#" onclick="return false;" class="md-icon-wrap md-icon-flip nav-switch">
+                <i class="md-icon md-menu close-icon"></i>
+                <i class="md-icon md-close open-icon"></i>
+            </a>
+        </li>
+        <li id="md-page-title"></li>
+        <li class="md-icon-wrap module-arrow">
+            <i class="md-icon md-chevron-right"></i>
+        </li>
+        <li id="module-label" labelBlock="back">
+            <div class="front animated"></div>
+            <div class="back animated"></div>
+        </li>
+    </ul>
+</div>
+<!--主操作区-->
+<div id="md-page-main">
+</div>
+<div id="md-page-main-overlay"></div>
+<!--导航-->
+<div id="md-page-nav">
+    <div class="nav-inner-scroll">
+        <div class="nav-inner">
+            <div class="user-profile">
+                <div class="user-info">
+                    <div class="user-avater"></div>
+                    <span class="user-name"></span>
+                </div>
+                <div class="user-menu-switch">
+                    <span class="user-email"></span>
+                    <i class="md-icon md-expand-more"></i>
+                </div>
+            </div>
+            <!-- 用户相关操作 -->
+            <ul id="user-menu"></ul>
+            <!-- 系统操作 -->
+            <ul id="main-menu"></ul>
+        </div>
+    </div>
+</div>
+<!--系统loading页面-->
+<div id="md-system-loading">
+</div>
+<div id="md-system-loading-tip">
+    <div class="spinner"></div>
+    <div class="tip-label">努力加载中....</div>
+</div>
+</body>
+</html>

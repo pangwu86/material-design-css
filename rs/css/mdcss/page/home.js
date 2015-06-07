@@ -2,10 +2,18 @@ $(document).ready(function () {
 
     // 查找当前环境下的配置文件
     var hconf = $.extend(true, {
+        // 用户信息
         profile: {
-            name: "未登录",
-            email: "无法获取邮箱信息",
-            avater: "" // 这里给个img的url即可
+            noprofile: false,
+            name: null,
+            email: null,
+            avater: null // 这里给个img的url即可
+        },
+        // 页面设置
+        page_setting: {
+            title: '',
+            page_dft: "/",
+            page_rs: "/page"
         },
         nav_user: [],
         nav_main: [],
@@ -13,9 +21,11 @@ $(document).ready(function () {
         closeQuick: false
     }, _md_page_home_ || {});
 
+
     var mphome = {
         components: {
             'header': $('#md-page-header'),
+            'pageTitle': $('#md-page-title'),
             'modulelabel': $('#module-label'),
             'modulelabelFront': $('#module-label > .front'),
             'modulelabelBack': $('#module-label > .back'),
@@ -74,6 +84,12 @@ $(document).ready(function () {
         action: {}
     };
 
+
+    // TODO 暂时放这里
+    if (hconf.page_setting.title) {
+        mphome.components.pageTitle.html(hconf.page_setting.title);
+    }
+
     // 加载profile信息
     mphome.profile = {
         'load': function (callback) {
@@ -98,10 +114,18 @@ $(document).ready(function () {
             }
         },
         'set': function (profile) {
-            mphome.components.profile.find('.user-name').html(profile.name);
-            mphome.components.profile.find('.user-email').html(profile.email);
-            if (profile.avater) {
-                mphome.components.profile.find('.user-avater').attr('src', profile.avater);
+            if (profile.noprofile) {
+                mphome.components.profile.hide();
+            } else {
+                if (profile.name) {
+                    mphome.components.profile.find('.user-name').html(profile.name);
+                }
+                if (profile.email) {
+                    mphome.components.profile.find('.user-email').html(profile.email);
+                }
+                if (profile.avater) {
+                    mphome.components.profile.find('.user-avater').css('background-image', 'url("' + profile.avater + '")');
+                }
             }
         }
     }
@@ -290,6 +314,12 @@ $(document).ready(function () {
                 } else if (ni.type == 'action') {
                     navhtml += ' action="' + ni.action + '"';
                 }
+                // 是否是独立页面
+                if (ni.page) {
+                    navhtml += ' pg="true" ';
+                } else {
+                    navhtml += ' pg="false" ';
+                }
                 navhtml += ' >';
                 // 图标
                 if (ni.icon) {
@@ -354,15 +384,16 @@ $(document).ready(function () {
             }
         },
         'navUrl': function (navItem) {
+            // TODO 这里参杂着walnut的相关代码, 等着需要抽离出来
             // 加载页面
             var url = navItem.url;
             var lochref = window.location.href;
             var lhi = lochref.indexOf("#");
-            var page = "/walnut/app.jsp";
+            var page = hconf.page_setting.page_dft;
             var args = null;
 
             // 清空当前页面
-            mphome.components.main[0].innerHTML = '';
+            mphome.components.main.empty();
             // 显示加载动画
 
             var isEssApp = !(url[0] == '/');   // 不是以 '/' 开头, 则为app名称
@@ -397,21 +428,30 @@ $(document).ready(function () {
             mphome.module.showLabel(navItem.label);
             // 设置新的href
             window.location.href = (lhi > 0 ? lochref.substr(0, lhi) : lochref) + "#" + url;
-            page = "/page" + page;
+            page = hconf.page_setting.page_rs + page;
 
-            // 读取页面
-            $http.getText(page, function (pg) {
-                pg += '<script>';
-                pg += '$(document).ready(function(){'
-                pg += '    myInit(' + (args == null ? '' : JSON.stringify(args)) + ');';
-                pg += '});'
-                pg += '<' + '/script>';
-                // 添加页面到mview中
-                // FIXME innerHtml 不会触发事件!
-                // mphome.components.main[0].innerHTML = pg;
-                mphome.components.main.html(pg);
-            });
-
+            var html = "";
+            // 独立页面
+            if (navItem.page) {
+                html += '<iframe src="' + page + '"></iframe>';
+                mphome.components.main.html(html);
+            }
+            // 代码片段
+            else {
+                $http.getText(page, function (pg) {
+                    // 内嵌的部分
+                    html += pg;
+                    html += '<script>';
+                    html += '$(document).ready(function(){'
+                    html += '    myInit(' + (args == null ? '' : JSON.stringify(args)) + ');';
+                    html += '});'
+                    html += '<' + '/script>';
+                    // 添加页面到mview中
+                    // FIXME innerHtml 不会触发事件!
+                    // mphome.components.main[0].innerHTML = html;
+                    mphome.components.main.html(html);
+                });
+            }
             // 关闭nav
             setTimeout(function () {
                 mphome.nav.close();
@@ -529,7 +569,8 @@ $(document).ready(function () {
                 mphome.nav.navUrl({
                     'url': $a.attr('url'),
                     'label': $a.attr('label'),
-                    'args': $a.attr('args')
+                    'args': $a.attr('args'),
+                    'page': $a.attr('pg')
                 });
             } else if (type == 'menu') {
                 // 不应走到这里的
@@ -641,8 +682,10 @@ $(document).ready(function () {
                         mphome.nav.navUrl({
                             'url': url,
                             'label': $a.attr('label'),
-                            'args': args
+                            'args': args,
+                            'page': $a.attr('pg')
                         });
+                        $a.parent().addClass('active');
                     }
                 } else {
                     $a = mphome.components.mainMenu.find('li:not(.has-sub-menu) > a').first();

@@ -53,10 +53,6 @@ body {
     left: 0;
     width: 4px;
     height: 4px;
-    -webkit-animation-play-state: paused;
-    animation-play-state: paused;
-    -webkit-animation: ajaxLoading cubic-bezier(0.77, 0, 0.175, 1) 1s infinite;
-    animation: ajaxLoading cubic-bezier(0.77, 0, 0.175, 1) 1s infinite;
 
     @-webkit-keyframes ajaxLoading {
       25% {
@@ -99,8 +95,8 @@ body {
 
   &.ajaxloading {
     &:after {
-      -webkit-animation-play-state: running;
-      animation-play-state: running;
+      -webkit-animation: ajaxLoading cubic-bezier(0.77, 0, 0.175, 1) 1s infinite;
+      animation: ajaxLoading cubic-bezier(0.77, 0, 0.175, 1) 1s infinite;
       opacity: 1;
     }
   }
@@ -135,7 +131,7 @@ body {
 
     }
 
-    #logo {
+    #md-page-title {
       line-height: @li-h;
       margin-left: 16px;
       font-size: @font-size-h4;
@@ -261,6 +257,14 @@ body {
   left: 0;
   right: 0;
   background-color: @light-background;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border: none;
+  }
+
 }
 
 // ---------------------------------------------- mainOverlay
@@ -331,7 +335,6 @@ body {
       line-height: @up-size;
 
       .user-avater {
-        display: block;
         border: none;
         float: left;
         width: @up-size;
@@ -351,6 +354,7 @@ body {
 
     .user-menu-switch {
       padding: 8px 16px;
+      height: 40px;
       background: @min-black;
       color: @white;
       position: relative;
@@ -796,11 +800,6 @@ body {
 
     #md-page-header {
       padding: 8px;
-
-      // 左边
-      #logo {
-        display: none;
-      }
 
       li.module-arrow {
         display: none;
