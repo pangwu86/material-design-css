@@ -279,7 +279,14 @@ $(document).ready(function () {
                 navhtml += '    <a  class="ripple-button" onclick="return false;" type="' + ni.type + '" label="' + ni.label + '"';
                 // 类型
                 if (ni.type == 'url') {
-                    navhtml += ' url="' + ni.url + '"';
+                    navhtml += ' url="' + ni.url + '" ';
+                    if (ni.args) {
+                        var argsStr = '';
+                        for (var k in ni.args) {
+                            argsStr += "&" + k + "=" + ni.args[k];
+                        }
+                        navhtml += ' args="' + argsStr.substr(1) + '"';
+                    }
                 } else if (ni.type == 'action') {
                     navhtml += ' action="' + ni.action + '"';
                 }
@@ -346,9 +353,9 @@ $(document).ready(function () {
                 alert("未注册事件: " + acNm);
             }
         },
-        'navUrl': function ($a) {
+        'navUrl': function (navItem) {
             // 加载页面
-            var url = $a.attr('url');
+            var url = navItem.url;
             var lochref = window.location.href;
             var lhi = lochref.indexOf("#");
             var page = "/walnut/app.jsp";
@@ -379,16 +386,15 @@ $(document).ready(function () {
             }
             // 普通页面,  格式为/xxx/xxxx?a=b&c=d
             else {
-                var qi = url.indexOf('?');
-                if (qi != -1) {
-                    args = urlArgs(url.substr(qi + 1));
-                    page = url.substr(0, qi);
-                } else {
-                    page = url;
+                page = url;
+                if (navItem.args) {
+                    url += "?" + navItem.args;
+                    args = mphome.urlArgs(navItem.args);
                 }
+
             }
             // 显示module-label
-            mphome.module.showLabel($a.attr('label'));
+            mphome.module.showLabel(navItem.label);
             // 设置新的href
             window.location.href = (lhi > 0 ? lochref.substr(0, lhi) : lochref) + "#" + url;
             page = "/page" + page;
@@ -450,7 +456,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     mphome.components.sysLoading.addClass('close');
                 }, 500);
-            }, 1200);
+            }, 1000);
         },
         'closeQuick': function () {
             mphome.sysTip.close();
@@ -520,7 +526,11 @@ $(document).ready(function () {
                 return;
             }
             else if (type == 'url') {
-                mphome.nav.navUrl($a);
+                mphome.nav.navUrl({
+                    'url': $a.attr('url'),
+                    'label': $a.attr('label'),
+                    'args': $a.attr('args')
+                });
             } else if (type == 'menu') {
                 // 不应走到这里的
             } else {
@@ -617,11 +627,22 @@ $(document).ready(function () {
                 // 初始化, 判断当前url
                 var $a = null;
                 var cui = location.href.indexOf('#');
+                var args = null;
                 if (cui != -1) {
                     var url = window.location.href.substr(cui + 1);
+                    var qi = url.indexOf('?');
+                    // 带着参数吗
+                    if (qi != -1) {
+                        args = url.substr(qi + 1);
+                        url = url.substr(0, qi);
+                    }
                     $a = $('a[url="' + url + '"]');
                     if ($a.length > 0) {
-                        $a.click();
+                        mphome.nav.navUrl({
+                            'url': url,
+                            'label': $a.attr('label'),
+                            'args': args
+                        });
                     }
                 } else {
                     $a = mphome.components.mainMenu.find('li:not(.has-sub-menu) > a').first();
