@@ -37,6 +37,12 @@ body {
   width: 100%;
   overflow: hidden;
 }
+iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+  overflow: auto;
+}
 ol,
 ul {
   padding: 0;

@@ -543,11 +543,10 @@ body {
   bottom: 0;
   left: 100%;
   overflow: hidden;
-  .ease-out();
+  .ease-out(@duration: @animation-duration * 1.5);
   &.open {
     left: 0;
   }
-
   // tab
   @tab-h: @header-h;
 

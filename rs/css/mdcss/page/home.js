@@ -192,15 +192,17 @@ $(document).ready(function () {
 
     mphome.ext = {
         'open': function () {
-            mphome.mainOverlay.open();
-            mphome.components.extSwtich.addClass('open');
-            mphome.components.extSwtichOff.addClass('open');
             mphome.components.ext.show();
-            mphome.nav.close();
-            mphome.components.navBtnGroup.addClass('close');
             setTimeout(function () {
-                mphome.components.ext.addClass('open');
-            }, 1)
+                mphome.mainOverlay.open();
+                mphome.components.extSwtich.addClass('open');
+                mphome.components.extSwtichOff.addClass('open');
+                mphome.nav.close();
+                mphome.components.navBtnGroup.addClass('close');
+                setTimeout(function () {
+                    mphome.components.ext.addClass('open');
+                }, 10)
+            }, 10)
         },
         'close': function () {
             if (mphome.components.extSwtich.hasClass('open')) {
@@ -209,7 +211,7 @@ $(document).ready(function () {
                 mphome.components.ext.removeClass('open');
                 setTimeout(function () {
                     mphome.components.ext.hide();
-                }, 400)
+                }, 1000)
                 mphome.mainOverlay.close();
                 mphome.components.navBtnGroup.removeClass('close');
             }
@@ -244,16 +246,68 @@ $(document).ready(function () {
             }
             return ebhtml;
         },
-        'makeTabContainerHtml': function (tabs) {
-            var ebhtml = '';
+        'makeTabContainerHtml': function ($container, tabs) {
             for (var i = 0, ml = tabs.length; i < ml; i++) {
                 var tab = tabs[i];
-                ebhtml += '<div class="ext-tab-container" ext="' + tab.ext + '" >'
-                // 参考navItem的加载方案
-                // TODO
-                ebhtml += '</div>'
+                mphome.ext._tabContainerHtml(tab, function (html) {
+                    $container.append(html);
+                });
             }
-            return ebhtml;
+        },
+        '_tabContainerHtml': function (navItem, call) {
+            var url = navItem.url;
+            var page = hconf.page_setting.page_dft;
+            var args = null;
+            var isEssApp = !(url[0] == '/');   // 不是以 '/' 开头, 则为app名称
+            // ess的app, 格式为app/id:xxxxx
+            if (isEssApp) {
+                // TODO
+                var si = url.indexOf('/');
+                var appname = null;
+                var obj = null;
+                if (si != -1) {
+                    appname = url.substr(0, si);
+                    // 获取obj对象
+                    var objId = url.substr(si + 1);
+                    obj = $http.syncGet("/o/get/" + objId).data;
+                } else {
+                    appname = url;
+                }
+                args = {};
+                args.appname = appname;
+                args.obj = obj;
+            }
+            // 普通页面,  格式为/xxx/xxxx?a=b&c=d
+            else {
+                page = url;
+                if (navItem.args) {
+                    url += "?" + navItem.args;
+                    args = mphome.urlArgs(navItem.args);
+                }
+
+            }
+            page = hconf.page_setting.page_rs + page;
+            var html = "";
+            // 独立页面
+            if (navItem.page) {
+                html += '<div class="ext-tab-container" ext="' + navItem.ext + '" >'
+                html += '<iframe src="' + page + '"></iframe>';
+                html += '</div>'
+                call(html);
+            }
+            // 代码片段
+            else {
+                $http.getText(page, function (pg) {
+                    // 内嵌的部分
+                    html += pg;
+                    html += '<script>';
+                    html += '$(document).ready(function(){'
+                    html += '    myInit(' + (args == null ? '' : JSON.stringify(args)) + ');';
+                    html += '});'
+                    html += '<' + '/script>';
+                    call(html);
+                });
+            }
         },
         'loadTab': function (callback) {
             var tabs = hconf.ext_tabs;
@@ -262,7 +316,7 @@ $(document).ready(function () {
             // 加载tab
             mphome.components.extTabGroup.append(mphome.ext.makeTabHtml(tabs));
             // 加载tab-container
-            mphome.components.extTabViewpage.append(mphome.ext.makeTabContainerHtml(tabs));
+            mphome.ext.makeTabContainerHtml(mphome.components.extTabViewpage, tabs);
             //mphome.components.extTabViewpage.css(
             //    'width', tabs.length + "00%"
             //);
@@ -318,9 +372,9 @@ $(document).ready(function () {
                 }
                 // 是否是独立页面
                 if (ni.page) {
-                    navhtml += ' pg="true" ';
+                    navhtml += ' page="true" ';
                 } else {
-                    navhtml += ' pg="false" ';
+                    navhtml += ' page="false" ';
                 }
                 navhtml += ' >';
                 // 图标
@@ -580,7 +634,7 @@ $(document).ready(function () {
                     'url': $a.attr('url'),
                     'label': $a.attr('label'),
                     'args': $a.attr('args'),
-                    'page': $a.attr('pg')
+                    'page': $a.attr('page')
                 });
             } else if (type == 'menu') {
                 // 不应走到这里的
@@ -656,9 +710,9 @@ $(document).ready(function () {
             if ($ftab.length > 0) {
                 $ftab.click();
             } else {
-                //mphome.components.extSwtich.remove();
-                //mphome.components.extBtnGroup.remove();
-                //mphome.components.ext.remove();
+                mphome.components.extSwtich.remove();
+                mphome.components.extBtnGroup.remove();
+                mphome.components.ext.remove();
             }
 
             // FIXME 在ios下的safari中, 不隐藏ext, 会有横向滑动
@@ -693,7 +747,7 @@ $(document).ready(function () {
                             'url': url,
                             'label': $a.attr('label'),
                             'args': args,
-                            'page': $a.attr('pg')
+                            'page': $a.attr('page')
                         });
                         $a.parent().addClass('active');
                     }
