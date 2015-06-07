@@ -1006,7 +1006,7 @@ body {
   position: absolute;
   z-index: 1002;
   width: 100%;
-  top: 64px;
+  top: 0;
   bottom: 0;
   left: 100%;
   overflow: hidden;
@@ -1023,11 +1023,11 @@ body {
   z-index: 1004;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 64px;
   background-color: #2196f3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   padding-right: 48px;
-  padding-left: 48px;
+  padding-left: 96px;
 }
 #md-page-extension #ext-tab-group .ext-tab-label {
   display: inline-block;
@@ -1036,7 +1036,7 @@ body {
 }
 #md-page-extension #ext-tab-group .ext-tab-label .ripple-button {
   height: 100%;
-  line-height: 48px;
+  line-height: 64px;
   font-size: 16.25px;
   color: rgba(255, 255, 255, 0.3);
   padding: 0 24px;
@@ -1061,13 +1061,19 @@ body {
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
+#md-page-extension #ext-tab-group .ext-switch {
+  z-index: 1005;
+  position: absolute;
+  left: 24px;
+  top: 8px;
+}
 #md-page-extension #ext-tab-container-group {
   background-color: #f9f9f9;
   position: absolute;
   overflow: hidden;
   z-index: 1003;
   width: 100%;
-  top: 48px;
+  top: 64px;
   bottom: 0;
 }
 #md-page-extension #ext-tab-container-group .ext-tab-container-group-viewpage {

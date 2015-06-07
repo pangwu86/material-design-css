@@ -17,6 +17,7 @@ $(document).ready(function () {
         },
         nav_user: [],
         nav_main: [],
+        ext_tabs: [],
         actions: {},
         closeQuick: false
     }, _md_page_home_ || {});
@@ -40,6 +41,7 @@ $(document).ready(function () {
             'main': $('#md-page-main'),
             'mainOverlay': $('#md-page-main-overlay'),
             'extSwtich': $('#md-page-header .ext-switch'),
+            'extSwtichOff': $('#ext-tab-group .ext-switch'),
             'extBtnGroup': $('#md-page-header .ext-btn-group'),
             'extTabGroup': $('#ext-tab-group'),
             'extTabGroupBBar': $('#ext-tab-group .tab-bottom-bar'),
@@ -192,6 +194,7 @@ $(document).ready(function () {
         'open': function () {
             mphome.mainOverlay.open();
             mphome.components.extSwtich.addClass('open');
+            mphome.components.extSwtichOff.addClass('open');
             mphome.components.ext.show();
             mphome.nav.close();
             mphome.components.navBtnGroup.addClass('close');
@@ -202,6 +205,7 @@ $(document).ready(function () {
         'close': function () {
             if (mphome.components.extSwtich.hasClass('open')) {
                 mphome.components.extSwtich.removeClass('open');
+                mphome.components.extSwtichOff.removeClass('open');
                 mphome.components.ext.removeClass('open');
                 setTimeout(function () {
                     mphome.components.ext.hide();
@@ -244,17 +248,15 @@ $(document).ready(function () {
             var ebhtml = '';
             for (var i = 0, ml = tabs.length; i < ml; i++) {
                 var tab = tabs[i];
-                // TODO 加载对应页面
                 ebhtml += '<div class="ext-tab-container" ext="' + tab.ext + '" >'
-                ebhtml += '<h1>' + tab.label + '</h1>'
+                // 参考navItem的加载方案
+                // TODO
                 ebhtml += '</div>'
             }
             return ebhtml;
         },
         'loadTab': function (callback) {
-
-            var tabs = [];
-
+            var tabs = hconf.ext_tabs;
             // 加载tab-btn
             mphome.components.extBtnGroup.append(mphome.ext.makeExtBtnHtml(tabs));
             // 加载tab
@@ -266,7 +268,7 @@ $(document).ready(function () {
             //);
             // 计算Tab每个块的宽度
             // 这里因为有padding-left 48px;
-            var tleft = 48;
+            var tleft = 48 * 2;
             mphome.components.extTabGroup.find('li').each(function (i, ele) {
                 var $li = $(ele);
                 var tw = ele.offsetWidth;
@@ -522,6 +524,14 @@ $(document).ready(function () {
             }
         });
 
+        mphome.components.extSwtichOff.on('click', function () {
+            if ($(this).hasClass('open')) {
+                mphome.ext.close();
+            } else {
+                mphome.ext.open();
+            }
+        });
+
         mphome.components.userMenuSwitch.on('click', function () {
             if ($(this).hasClass('open')) {
                 mphome.userMenu.close();
@@ -646,14 +656,14 @@ $(document).ready(function () {
             if ($ftab.length > 0) {
                 $ftab.click();
             } else {
-                mphome.components.extSwtich.remove();
-                mphome.components.extBtnGroup.remove();
-                mphome.components.ext.remove();
+                //mphome.components.extSwtich.remove();
+                //mphome.components.extBtnGroup.remove();
+                //mphome.components.ext.remove();
             }
 
             // FIXME 在ios下的safari中, 不隐藏ext, 会有横向滑动
-            mphome.components.ext.hide();
-            mphome.components.extOverlay.hide();
+            //mphome.components.ext.hide();
+            //mphome.components.extOverlay.hide();
 
             // 加载菜单
             mphome.nav.loadMenu(function () {
