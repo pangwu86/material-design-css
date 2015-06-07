@@ -1734,3 +1734,78 @@ input[type=password] {
 .md-checkbox-field.check-left .checkbox-wrap {
   float: left;
 }
+.md-table-container {
+  padding: 16px 16px;
+  background: #ffffff;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.md-table-container .md-table-title {
+  font-size: 16.25px;
+  height: 64px;
+  line-height: 64px;
+  color: rgba(0, 0, 0, 0.87);
+  padding-left: 24px;
+  float: left;
+}
+.md-table-container .md-table-title.right {
+  float: right;
+  padding-left: 0px;
+  padding-right: 24px;
+}
+.md-table-container .md-table {
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.md-table-container .md-table thead {
+  width: 100%;
+}
+.md-table-container .md-table thead tr {
+  height: 56px;
+}
+.md-table-container .md-table thead tr th {
+  font-size: 11.7px;
+  color: rgba(0, 0, 0, 0.54);
+  vertical-align: middle;
+  font-weight: 500;
+  border-width: 1px;
+  border-bottom: 2px solid #f0f0f0;
+  padding: 10px;
+  text-align: left;
+}
+.md-table-container .md-table thead tr th:first-child {
+  padding-left: 24px;
+}
+.md-table-container .md-table thead tr th:last-child {
+  padding-right: 24px;
+}
+.md-table-container .md-table thead tr th.number {
+  text-align: right;
+}
+.md-table-container .md-table tbody {
+  width: 100%;
+}
+.md-table-container .md-table tbody tr {
+  height: 48px;
+}
+.md-table-container .md-table tbody tr td {
+  text-align: left;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 10px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #f0f0f0;
+  white-space: normal;
+}
+.md-table-container .md-table tbody tr td:first-child {
+  padding-left: 24px;
+}
+.md-table-container .md-table tbody tr td:last-child {
+  padding-right: 24px;
+}
+.md-table-container .md-table tbody tr td.number {
+  text-align: right;
+}

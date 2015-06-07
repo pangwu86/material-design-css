@@ -17,170 +17,160 @@
             margin: 0 16px;
         }
 
-        .fab-1 {
-            right: 300px;
-            bottom: 24px;
+        .demo-table {
+            width: 100%;
+            height: auto;
         }
 
-        .fab-2 {
-            top: 24px;
-            right: 300px;
-        }
-
-        .fab-3 {
-            left: 300px;
-            bottom: 24px;
-        }
-
-        .fab-4 {
-            top: 24px;
-            left: 300px;
-        }
     </style>
     <script>
         $(document).ready(function () {
-            $('#btn1').focus();
         });
     </script>
 </head>
 <body>
-<h1>Button</h1>
+<h1>Table</h1>
 
 <div class="example">
-    <div class="tip">记得试试tab键, 会有focus的效果</div>
+
     <div class="row">
-        <button class="md-button flat-button">
-            <span class="md-button-label">Btn1</span>
-        </button>
-        <button class="md-button flat-button is-primary">
-            <span class="md-button-label">primary</span>
-        </button>
-        <button class="md-button flat-button is-secondary">
-            <span class="md-button-label">secondary</span>
-        </button>
-        <button class="md-button flat-button is-disabled">
-            <span class="md-button-label">disabled</span>
-        </button>
+        <div class="paper z-depth-1 rounded md-table-container demo-table">
+            <i class="md-table-title">测试列表</i>
+            <table class="md-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>列1</th>
+                    <th class="number">列2</th>
+                    <th class="number">列3</th>
+                    <th>列4</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td>测试下</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
     <div class="row">
-        <button class="md-button raised-button" id="btn1">
-            <span class="md-button-label">Btn1</span>
-        </button>
-        <button class="md-button raised-button is-primary">
-            <span class="md-button-label">primary</span>
-        </button>
-        <button class="md-button raised-button is-secondary">
-            <span class="md-button-label">secondary</span>
-        </button>
-        <button class="md-button raised-button is-disabled">
-            <span class="md-button-label">disabled</span>
-        </button>
-    </div>
-    <div class="row fab">
-        <button class="md-button fab-button fab-1">
-            <div class="fab-button-inner">
-                <i class="md-icon md-add"></i>
-            </div>
-            <ul class="top">
-                <li class="md-button fab-button-mini fab-pos-1">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-mode-edit"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-2">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-insert-link"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-3">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-format-line-spacing"></i>
-                    </div>
-                </li>
-            </ul>
-        </button>
-
-        <button class="md-button fab-button fab-2">
-            <div class="fab-button-inner">
-                <i class="md-icon md-add"></i>
-            </div>
-            <ul class="left">
-                <li class="md-button fab-button-mini fab-pos-1">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-mode-edit"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-2">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-insert-link"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-3">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-format-line-spacing"></i>
-                    </div>
-                </li>
-            </ul>
-        </button>
-
-        <button class="md-button fab-button fab-3">
-            <div class="fab-button-inner">
-                <i class="md-icon md-add"></i>
-            </div>
-            <ul class="right">
-                <li class="md-button fab-button-mini fab-pos-1">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-mode-edit"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-2">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-insert-link"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-3">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-format-line-spacing"></i>
-                    </div>
-                </li>
-            </ul>
-        </button>
-
-        <button class="md-button fab-button fab-4">
-            <div class="fab-button-inner">
-                <i class="md-icon md-add"></i>
-            </div>
-            <ul class="bottom">
-                <li class="md-button fab-button-mini fab-pos-1">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-mode-edit"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-2">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-insert-link"></i>
-                    </div>
-                </li>
-                <li class="md-button fab-button-mini fab-pos-3">
-                    <div class="fab-button-inner">
-                        <i class="md-icon md-format-line-spacing"></i>
-                    </div>
-                </li>
-            </ul>
-        </button>
+        <div class="paper z-depth-1 rounded md-table-container demo-table">
+            <i class="md-table-title">测试列表2</i>
+            <i class="md-table-title right">总共:xx个</i>
+            <table class="md-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>列1</th>
+                    <th class="number">列2</th>
+                    <th class="number">列3</th>
+                    <th class="number">列4</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>你好</td>
+                    <td class="number">1920</td>
+                    <td class="number">456</td>
+                    <td class="number">2015-06-08</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 <div class="example-code">
-    <div class="row">
-        TODO
-    </div>
-    <div class="row">
-        TODO
-    </div>
-    <div class="row">
-        TODO
-    </div>
 </div>
 </body>
 </html>
