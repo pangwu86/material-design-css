@@ -433,6 +433,7 @@ input[type=password] {
   padding: 0;
   display: inline-table;
   overflow: hidden;
+  outline: 0;
 }
 .md-button:focus {
   outline: none;
@@ -963,8 +964,8 @@ input[type=password] {
   color: #ffffff;
   position: relative;
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  width: 56px;
+  height: 56px;
   padding: 16px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
   cursor: pointer;
@@ -1395,8 +1396,8 @@ input[type=password] {
   color: #ffffff;
   position: relative;
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  width: 56px;
+  height: 56px;
   padding: 16px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
   cursor: pointer;
@@ -1435,8 +1436,8 @@ input[type=password] {
   color: #ffffff;
   position: relative;
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
   padding: 8px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
   cursor: pointer;
