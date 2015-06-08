@@ -18,7 +18,14 @@ $(document).ready(function () {
         nav_user: [],
         nav_main: [],
         ext_tabs: [],
-        actions: {},
+        actions: {
+            'signout': function () {
+                // 退出系统
+                setTimeout(function () {
+                    window.location.href = "/u/do/logout";
+                }, 1500);
+            }
+        },
         closeQuick: false
     }, _md_page_home_ || {});
 
@@ -86,6 +93,14 @@ $(document).ready(function () {
         action: {}
     };
 
+
+    mphome.signout = function (call) {
+        // 停止其他操作
+        mphome.sysLoading.open('正在退出系统...');
+        // 关闭main
+        mphome.components.main.empty();
+        call();
+    }
 
     // TODO 暂时放这里
     if (hconf.page_setting.title) {
@@ -249,12 +264,12 @@ $(document).ready(function () {
         'makeTabContainerHtml': function ($container, tabs) {
             for (var i = 0, ml = tabs.length; i < ml; i++) {
                 var tab = tabs[i];
-                mphome.ext._tabContainerHtml(tab, function (html) {
+                mphome.ext._tabContainerHtml(tab, i, function (html) {
                     $container.append(html);
                 });
             }
         },
-        '_tabContainerHtml': function (navItem, call) {
+        '_tabContainerHtml': function (navItem, index, call) {
             var url = navItem.url;
             var page = hconf.page_setting.page_dft;
             var args = null;
@@ -288,9 +303,9 @@ $(document).ready(function () {
             }
             page = hconf.page_setting.page_rs + page;
             var html = "";
+            html += '<div class="ext-tab-container ' + (index == 0 ? 'active' : '') + '" ext="' + navItem.ext + '" >'
             // 独立页面
             if (navItem.page) {
-                html += '<div class="ext-tab-container" ext="' + navItem.ext + '" >'
                 html += '<iframe src="' + page + '"></iframe>';
                 html += '</div>'
                 call(html);
@@ -305,6 +320,7 @@ $(document).ready(function () {
                     html += '    myInit(' + (args == null ? '' : JSON.stringify(args)) + ');';
                     html += '});'
                     html += '<' + '/script>';
+                    html += '</div>'
                     call(html);
                 });
             }
@@ -716,8 +732,8 @@ $(document).ready(function () {
             }
 
             // FIXME 在ios下的safari中, 不隐藏ext, 会有横向滑动
-            //mphome.components.ext.hide();
-            //mphome.components.extOverlay.hide();
+            mphome.components.ext.hide();
+            mphome.components.extOverlay.hide();
 
             // 加载菜单
             mphome.nav.loadMenu(function () {
