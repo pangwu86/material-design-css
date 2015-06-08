@@ -338,7 +338,7 @@ $(document).ready(function () {
             //);
             // 计算Tab每个块的宽度
             // 这里因为有padding-left 48px;
-            var tleft = 48 * 2;
+            var tleft = parseInt($("#ext-tab-group").css('padding-left'));
             mphome.components.extTabGroup.find('li').each(function (i, ele) {
                 var $li = $(ele);
                 var tw = ele.offsetWidth;

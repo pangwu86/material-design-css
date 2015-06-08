@@ -1027,7 +1027,7 @@ body {
   background-color: #2196f3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   padding-right: 48px;
-  padding-left: 96px;
+  padding-left: 88px;
 }
 #md-page-extension #ext-tab-group .ext-tab-label {
   display: inline-block;
@@ -1318,5 +1318,12 @@ body {
   }
   #md-page-nav .nav-inner-scroll #main-menu li a {
     padding-left: 56px;
+  }
+  #md-page-extension #ext-tab-group {
+    padding-right: 24px;
+    padding-left: 64px;
+  }
+  #md-page-extension #ext-tab-group .ext-switch {
+    left: 8px;
   }
 }
