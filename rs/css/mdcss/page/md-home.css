@@ -24,16 +24,22 @@ body {
   color: rgba(0, 0, 0, 0.87);
   background-color: #f9f9f9;
 }
+body.md-home {
+  overflow: hidden;
+}
 #md-page-header {
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 56px;
   background-color: #2196f3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-  padding: 8px 24px;
+  padding: 4px 24px;
+}
+#md-page-header.notHeader {
+  box-shadow: none;
 }
 #md-page-header:after {
   opacity: 0;
@@ -45,7 +51,7 @@ body {
   content: "";
   background-color: #ffffff;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 4px;
   height: 4px;
@@ -122,6 +128,7 @@ body {
   display: block;
   float: left;
   height: 48px;
+  min-width: 48px;
 }
 #md-page-header .mp-header-left #md-page-title {
   line-height: 48px;
@@ -132,8 +139,9 @@ body {
 }
 #md-page-header .mp-header-left #module-label {
   position: relative;
-  width: 128px;
+  width: 200px;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 #md-page-header .mp-header-left #module-label ._label {
   position: absolute;
@@ -246,18 +254,18 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 56px;
   background-color: #2196f3;
   -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  -webkit-transform: translate3d(0, -64px, 0);
-  -moz-transform: translate3d(0, -64px, 0);
-  -ms-transform: translate3d(0, -64px, 0);
-  -o-transform: translate3d(0, -64px, 0);
-  transform: translate3d(0, -64px, 0);
+  -webkit-transform: translate3d(0, -56px, 0);
+  -moz-transform: translate3d(0, -56px, 0);
+  -ms-transform: translate3d(0, -56px, 0);
+  -o-transform: translate3d(0, -56px, 0);
+  transform: translate3d(0, -56px, 0);
   opacity: 0;
 }
 #md-page-header .mp-info.open {
@@ -271,7 +279,7 @@ body {
 #md-page-main {
   position: absolute;
   z-index: 0;
-  top: 64px;
+  top: 56px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -285,7 +293,7 @@ body {
 }
 #md-page-main-overlay {
   position: absolute;
-  z-index: 1;
+  z-index: 1001;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.12);
   -webkit-transition: opacity 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -298,7 +306,7 @@ body {
   opacity: 1;
 }
 #md-page-main-overlay.show {
-  top: 64px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -310,7 +318,7 @@ body {
   user-select: none;
   position: fixed;
   z-index: 1001;
-  top: 64px;
+  top: 0;
   bottom: 0;
   left: 0;
   width: 288px;
@@ -337,6 +345,11 @@ body {
   transform: translate3d(0, 0, 0);
   opacity: 1;
 }
+#md-page-nav .md-page-nav-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 #md-page-nav .nav-inner-scroll {
   width: 388px;
   height: 100%;
@@ -348,7 +361,7 @@ body {
 #md-page-nav .user-profile {
   width: 100%;
   height: 120px;
-  background-image: url("home_profile_landscape.jpg");
+  background-image: url("img/home_profile_landscape.jpg");
   background-size: cover;
   overflow: hidden;
 }
@@ -364,7 +377,7 @@ body {
   height: 48px;
   border-radius: 50%;
   margin-right: 16px;
-  background-image: url("home_avater.png");
+  background-image: url("img/home_avater.png");
   background-size: cover;
 }
 #md-page-nav .user-profile .user-info .user-name {
@@ -414,14 +427,14 @@ body {
 }
 #md-page-nav ._nav_menu li a {
   text-decoration: none;
-  padding: 12px 16px;
+  padding: 12px 48px 12px 72px;
   position: relative;
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
-  padding-left: 72px;
   width: 100%;
   display: block;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -452,6 +465,8 @@ body {
 }
 #md-page-nav ._nav_menu li.has-sub-menu ._sub_menu_switch {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -468,6 +483,8 @@ body {
 }
 #md-page-nav ._nav_menu li.has-sub-menu > a:after {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -481,7 +498,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f0fb";
+  content: "\f231";
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -490,6 +507,8 @@ body {
 }
 #md-page-nav ._nav_menu li.has-sub-menu > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -503,7 +522,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f111";
+  content: "\f22c";
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -519,6 +538,8 @@ body {
 }
 #md-page-nav ._nav_menu li.has-sub-menu.open > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -557,14 +578,14 @@ body {
 }
 #md-page-nav #user-menu li a {
   text-decoration: none;
-  padding: 12px 16px;
+  padding: 12px 48px 12px 72px;
   position: relative;
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
-  padding-left: 72px;
   width: 100%;
   display: block;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -595,6 +616,8 @@ body {
 }
 #md-page-nav #user-menu li.has-sub-menu ._sub_menu_switch {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -611,6 +634,8 @@ body {
 }
 #md-page-nav #user-menu li.has-sub-menu > a:after {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -624,7 +649,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f0fb";
+  content: "\f231";
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -633,6 +658,8 @@ body {
 }
 #md-page-nav #user-menu li.has-sub-menu > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -646,7 +673,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f111";
+  content: "\f22c";
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -662,6 +689,8 @@ body {
 }
 #md-page-nav #user-menu li.has-sub-menu.open > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -701,14 +730,14 @@ body {
 }
 #md-page-nav #main-menu li a {
   text-decoration: none;
-  padding: 12px 16px;
+  padding: 12px 48px 12px 72px;
   position: relative;
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
-  padding-left: 72px;
   width: 100%;
   display: block;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -739,6 +768,8 @@ body {
 }
 #md-page-nav #main-menu li.has-sub-menu ._sub_menu_switch {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -755,6 +786,8 @@ body {
 }
 #md-page-nav #main-menu li.has-sub-menu > a:after {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -768,7 +801,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f0fb";
+  content: "\f231";
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -777,6 +810,8 @@ body {
 }
 #md-page-nav #main-menu li.has-sub-menu > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -790,7 +825,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f111";
+  content: "\f22c";
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -806,6 +841,8 @@ body {
 }
 #md-page-nav #main-menu li.has-sub-menu.open > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -845,14 +882,14 @@ body {
 }
 #md-page-nav .sub-menu li a {
   text-decoration: none;
-  padding: 12px 16px;
+  padding: 12px 48px 12px 72px;
   position: relative;
   color: rgba(0, 0, 0, 0.87);
   line-height: 24px;
-  padding-left: 72px;
   width: 100%;
   display: block;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -moz-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -ms-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -883,6 +920,8 @@ body {
 }
 #md-page-nav .sub-menu li.has-sub-menu ._sub_menu_switch {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -899,6 +938,8 @@ body {
 }
 #md-page-nav .sub-menu li.has-sub-menu > a:after {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -912,7 +953,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f0fb";
+  content: "\f231";
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
@@ -921,6 +962,8 @@ body {
 }
 #md-page-nav .sub-menu li.has-sub-menu > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -934,7 +977,7 @@ body {
   -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  content: "\f111";
+  content: "\f22c";
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -950,6 +993,8 @@ body {
 }
 #md-page-nav .sub-menu li.has-sub-menu.open > a:before {
   right: 16px;
+  width: 24px;
+  text-align: center;
   display: inline-block;
   font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: 24px;
@@ -975,7 +1020,7 @@ body {
 #md-page-user {
   position: fixed;
   z-index: 1001;
-  top: 64px;
+  top: 56px;
   bottom: 0;
   right: 0;
   width: 288px;
@@ -1023,7 +1068,7 @@ body {
   z-index: 1004;
   position: relative;
   width: 100%;
-  height: 64px;
+  height: 56px;
   background-color: #2196f3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   padding-right: 48px;
@@ -1036,7 +1081,7 @@ body {
 }
 #md-page-extension #ext-tab-group .ext-tab-label .ripple-button {
   height: 100%;
-  line-height: 64px;
+  line-height: 56px;
   font-size: 16.25px;
   color: rgba(255, 255, 255, 0.3);
   padding: 0 24px;
@@ -1065,7 +1110,7 @@ body {
   z-index: 1005;
   position: absolute;
   left: 24px;
-  top: 8px;
+  top: 4px;
 }
 #md-page-extension #ext-tab-container-group {
   background-color: #f9f9f9;
@@ -1073,7 +1118,7 @@ body {
   overflow: hidden;
   z-index: 1003;
   width: 100%;
-  top: 64px;
+  top: 56px;
   bottom: 0;
 }
 #md-page-extension #ext-tab-container-group .ext-tab-container-group-viewpage {
@@ -1288,13 +1333,13 @@ body {
 }
 @media screen and (max-width: 900px) {
   #md-page-header {
-    padding: 8px;
+    padding: 4px 8px;
   }
   #md-page-header li.module-arrow {
     display: none;
   }
   #md-page-header #module-label {
-    margin-left: 8px;
+    margin-left: 0px;
   }
   #md-page-header .ext-btn-group {
     display: none;

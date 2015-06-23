@@ -9,11 +9,21 @@
 
 .md-icon {
   color: @white;
+  display: inline-block;
+  font: normal normal normal 14px/1 'Material Design Iconic Font';
   font-size: @icon-small-size;
+  width: @icon-small-size;
+  height: @icon-small-size;
+  line-height: @icon-small-size;
+  text-align: center;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .md-icon-flip {
   position: relative;
+  display: inline-block;
 
   .close-icon {
     position: absolute;
@@ -71,6 +81,7 @@
   color: @white;
   display: inline-block;
   width: @icon-small-size;
+  height: @icon-small-size;
   line-height: @icon-small-size;
   text-align: center;
   font: normal normal normal 14px/1 FontAwesome;

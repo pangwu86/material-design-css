@@ -1,33 +1,13 @@
-@import "../core/color";
-@import "../core/spacing";
-@import "../core/typography";
-@import "../core/transition";
-@import "../app";
+@import "_page_vars";
 
-// 常用参数
-@header-h: 64px;
-@side-w: 288px;
-
-// z-index
-// 0- 1000
-@zi-main: @zi-app;
-@zi-main-overlay : @zi-app + 1;
-// 1000 - 2000
-@zi-header: @zi-system;
-@zi-side-left: @zi-system + 1;
-@zi-side-right: @zi-system + 1;
-
-@zi-ext: @zi-system + 2;
-@zi-fab-mini: @zi-system + 3;
-@zi-fab: @zi-system + 4;
-
-@zi-ext-ol-loading: @zi-system + 5;
-@zi-ext-ol: @zi-system + 6;
-@zi-ext-sys-loading: @zi-system + 7;
 // 2000+
 body {
   color: @text-color;
   background-color: @light-background;
+}
+
+body.md-home {
+  overflow: hidden;
 }
 
 // ---------------------------------------------- header
@@ -40,7 +20,11 @@ body {
   height: @header-h;
   background-color: @primary-1-color;
   box-shadow: @default-shadow;
-  padding: 8px 24px;
+  padding: 4px 24px;
+
+  &.notHeader {
+    box-shadow: none;
+  }
 
   // ajax-loading
   &:after {
@@ -49,7 +33,7 @@ body {
     content: "";
     background-color: @white;
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 4px;
     height: 4px;
@@ -125,6 +109,7 @@ body {
       display: block;
       float: left;
       height: @li-h;
+      min-width: @li-h;
     }
 
     .nav-switch {
@@ -141,8 +126,9 @@ body {
 
     #module-label {
       position: relative;
-      width: 128px;
+      width: 200px;
       overflow: hidden;
+      text-overflow: ellipsis;
 
       ._label {
         position: absolute;
@@ -278,7 +264,8 @@ body {
     opacity: 1;
   }
   &.show {
-    top: @header-h;
+    //top: @header-h;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
@@ -293,7 +280,8 @@ body {
   user-select: none;
   position: fixed;
   z-index: @zi-side-left;
-  top: @header-h;
+  //top: @header-h;
+  top: 0;
   bottom: 0;
   left: 0;
   width: @side-w;
@@ -307,6 +295,13 @@ body {
   &.open {
     .user-transform(translate3d(0, 0, 0));
     opacity: 1;
+  }
+
+  .md-page-nav-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
   }
 
   // 隐藏滚动条
@@ -324,7 +319,7 @@ body {
   .user-profile {
     width: 100%;
     height: 120px;
-    background-image: url("home_profile_landscape.jpg");
+    background-image: url("img/home_profile_landscape.jpg");
     background-size: cover;
     overflow: hidden;
     @up-size: 48px;
@@ -341,7 +336,7 @@ body {
         height: @up-size;
         border-radius: 50%;
         margin-right: 16px;
-        background-image: url("home_avater.png");
+        background-image: url("img/home_avater.png");
         background-size: cover;
       }
 
@@ -398,14 +393,15 @@ body {
 
       a {
         text-decoration: none;
-        padding: 12px 16px;
+        padding: 12px 48px 12px 72px;
         position: relative;
         color: @text-color;
         line-height: 24px;
-        padding-left: 72px;
         width: 100%;
         display: block;
         overflow: hidden;
+        text-overflow: ellipsis;
+
         .ease-out(@property: color);
 
         .touch-ripple {
@@ -439,6 +435,8 @@ body {
 
         ._sub_menu_switch {
           right: 16px;
+          width: 24px;
+          text-align: center;
           display: inline-block;
           font: normal normal normal 14px/1 'Material Design Iconic Font';
           font-size: 24px;
@@ -452,12 +450,12 @@ body {
 
         > a:after {
           ._sub_menu_switch;
-          content: "\f0fb";
+          content: "\f231";
           .user-transform(scale(1));
         }
         > a:before {
           ._sub_menu_switch;
-          content: "\f111";
+          content: "\f22c";
           .user-transform(scale(0));
         }
 
@@ -600,7 +598,7 @@ body {
       z-index: @zi-ext + 3;
       position: absolute;
       left: 24px;
-      top: 8px;
+      top: 4px;
     }
   }
 
@@ -803,14 +801,14 @@ body {
   @media (max-width: 900px) {
 
     #md-page-header {
-      padding: 8px;
+      padding: 4px 8px;
 
       li.module-arrow {
         display: none;
       }
 
       #module-label {
-        margin-left: 8px;
+        margin-left: 0px;
       }
 
       // 右边
@@ -822,6 +820,7 @@ body {
       #md-page-title {
         display: none;
       }
+
     }
 
     #md-page-nav {

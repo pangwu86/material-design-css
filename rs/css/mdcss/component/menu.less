@@ -1,0 +1,58 @@
+// 必须是个ol或ul
+@import "paper";
+@import "../core/color";
+
+@menu-w: 160px;
+
+.md-menu {
+  position: absolute;
+  z-index: 5000;
+  width: @menu-w;
+  padding: 4px 0;
+  background: @white;
+  .paper;
+  .rounded;
+  .z-depth-3;
+
+  &.align-right {
+    right: 0;
+  }
+
+  & > li {
+    padding: 8px 16px;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.divider {
+      height: 1px;
+      line-height: 1px;
+      width: 100%;
+      padding: 0;
+      margin: 2px 0;
+      background: @divider-on-light;
+    }
+
+    &.active {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: @primary-2-color;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: @divider-on-light;
+    }
+  }
+}

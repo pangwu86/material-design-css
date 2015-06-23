@@ -10,3 +10,30 @@
   clear: both;
   visibility: hidden;
 }
+.md-w10 {
+  width: 10%;
+}
+.md-w20 {
+  width: 20%;
+}
+.md-w30 {
+  width: 30%;
+}
+.md-w40 {
+  width: 40%;
+}
+.md-w50 {
+  width: 50%;
+}
+.md-w60 {
+  width: 60%;
+}
+.md-w70 {
+  width: 70%;
+}
+.md-w80 {
+  width: 80%;
+}
+.md-w90 {
+  width: 90%;
+}

@@ -1,0 +1,596 @@
+@import "_page_vars";
+
+@disk-padding: 72px;
+@menu-item-w: 48px;
+@menu-w: @menu-item-w * 3;
+
+.md-disk {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &.full {
+    .md-disk-top-bg {
+      display: none;
+    }
+    .md-disk-container {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  .md-disk-top-bg {
+    position: absolute;
+    z-index: @zi-header;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: @header-h / 2 * 3;
+    background-color: @primary-1-color;
+    box-shadow: @default-shadow;
+  }
+
+  .md-disk-container {
+    position: absolute;
+    z-index: @zi-header + 1;
+    top: @header-h / 2;
+    bottom: 0;
+    left: @disk-padding;
+    right: @disk-padding;
+    background: @white;
+    box-shadow: @default-shadow;
+    overflow: hidden;
+
+    &.obj {
+
+      .md-disk-grid {
+        display: none;
+      }
+
+      .md-disk-body {
+
+        .md-disk-data {
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          overflow: hidden;
+          background: rgba(0, 0, 0, 0.02);
+        }
+      }
+
+      .md-disk-header {
+        .disk-menu {
+          width: 48px;
+
+          .disk-menu-item {
+            display: none;
+          }
+          .disk-menu-item:last-child {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .disk-icon {
+      display: inline-block;
+      float: left;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+    }
+
+    .md-disk-header {
+      position: absolute;
+      height: @header-h;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 4px 24px;
+      border-bottom: 1px solid @divider-on-light;
+
+      .disk-path {
+        float: left;
+        width: calc(~"100% - @{menu-w}");
+        height: 100%;
+        overflow: hidden;
+
+        .disk-path-obj {
+          display: inline-block;
+          float: left;
+          position: relative;
+          min-width: 60px;
+          max-width: 160px;
+          margin-right: 24px;
+
+          .disk-icon {
+            margin: 16px 8px 16px 0px;
+          }
+
+          &:after {
+            right: -24px;
+            top: 12px;
+            width: 24px;
+            text-align: center;
+            display: inline-block;
+            font: normal normal normal 14px/1 'Material Design Iconic Font';
+            font-size: 24px;
+            font-weight: 100;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            color: @icon-on-light;
+            content: '\f2c2';
+          }
+          .disk-path-nm {
+            display: inline-block;
+            float: left;
+            height: 48px;
+            line-height: 48px;
+            min-width: 36px;
+            max-width: 120px;
+            font-size: @font-size-h4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &:hover {
+              cursor: pointer;
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .disk-path-obj:last-child {
+          margin-right: 0px;
+          &:after {
+            display: none;
+          }
+        }
+
+      }
+
+      // 菜单
+      .disk-menu-switch {
+        display: none;
+        float: right;
+        width: @menu-item-w;
+        height: 100%;
+      }
+
+      .disk-menu {
+        float: right;
+        width: @menu-w;
+        height: 100%;
+        display: inline-block;
+      }
+
+      .disk-menu-item {
+        float: left;
+        display: block;
+        position: relative;
+        width: 48px;
+        height: 48px;
+        border-radius: 2px;
+        background-color: @white;
+        .ease-out(@property: background-color);
+
+        .md-menu {
+          display: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: @divider-on-light;
+          .md-icon {
+            color: @text-on-light;
+          }
+
+          .md-menu {
+            display: block;
+          }
+        }
+
+        .md-icon {
+          width: 48px;
+          height: 48px;
+          line-height: 48px;
+          text-align: center;
+          display: block;
+          color: @icon-on-light;
+          .ease-out(@property: color);
+        }
+
+        .disk-menu-nm {
+          display: none;
+        }
+      }
+    }
+
+    .md-disk-body {
+      position: absolute;
+      top: @header-h;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      ._md-disk-cell {
+        display: block;
+        float: left;
+        height: 24px;
+        line-height: 24px;
+        margin: 12px 0;
+        padding: 0 16px;
+        font-size: @font-size-h4;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      // 显示列表信息
+      .md-disk-grid {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        @grid-row-h: 48px;
+
+        .md-disk-grid-title {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;;
+          position: absolute;
+          top: 0;
+          height: @grid-row-h;
+          left: 0;
+          right: -20px;
+          overflow-y: scroll;
+          background: rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid @faint-black;
+
+          .md-disk-gt-cell {
+            ._md-disk-cell;
+            color: @icon-on-light;
+
+            &[sort] {
+              cursor: pointer;
+            }
+
+            .md-disk-sort-asc {
+              float: left;
+              display: none;
+              font-size: @font-size-h3;
+              color: @icon-on-light;
+              &:before {
+                content: '\f2bf';
+              }
+            }
+
+            .md-disk-sort-desc {
+              float: left;
+              display: none;
+              font-size: @font-size-h3;
+              color: @icon-on-light;
+              &:before {
+                content: '\f2be';
+              }
+            }
+
+            &.asc {
+              .md-disk-sort-asc {
+                display: block;
+              }
+            }
+            &.desc {
+              .md-disk-sort-desc {
+                display: block;
+              }
+            }
+          }
+        }
+
+        .md-disk-grid-body {
+          position: absolute;
+          top: @grid-row-h;
+          bottom: 0;
+          left: 0;
+          right: -20px;
+          overflow-y: scroll;
+          background: @faint-white;
+
+          // 默认table格式
+          .md-disk-grid-item {
+            display: block;
+            float: left;
+            position: relative;
+            width: 100%;
+            height: 48px;
+            border-bottom: 1px solid @faint-black;
+            overflow: hidden;
+
+            &.active {
+              &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 4px;
+                height: 100%;
+                background-color: @primary-2-color;
+              }
+            }
+
+            &:hover {
+              background-color: @divider-on-light;
+
+              .gi-nm {
+                text-decoration: underline;
+                cursor: pointer;
+              }
+            }
+
+            .md-disk-gi-preview {
+              background-size: cover;
+              display: none;
+            }
+
+            .md-gi-group {
+              & > [class^="gi-"] {
+                ._md-disk-cell;
+                font-size: @font-size-h5;
+                .disk-icon {
+                  margin: 4px 8px 4px 0px;
+                }
+              }
+            }
+
+          }
+        }
+      }
+
+      // grid模式下
+      &.grid {
+        .md-disk-grid {
+
+          .md-disk-grid-title {
+            display: none;
+          }
+
+          .md-disk-grid-body {
+            top: 0;
+            padding: 0 24px;
+
+            .md-disk-grid-item {
+              width: 160px;
+              height: 200px;
+              border-radius: 2px;
+              box-shadow: @zd1-shadow;
+              .ease-out(@property: box-shadow);
+              margin: 24px 12px;
+              background: rgba(0, 0, 0, 0.02);
+
+              &.active {
+                border: 1px solid @primary-1-color;
+                &:before {
+                  display: none;
+                }
+                .md-gi-group {
+                  & > .gi-nm {
+                    color: @text-on-light;
+                  }
+                }
+
+              }
+
+              &:hover {
+                box-shadow: @zd3-shadow;
+              }
+
+              .md-disk-gi-preview {
+                display: block;
+                border: 0;
+                width: 160px;
+                height: 160px;
+                //margin: 16px 16px 0;
+              }
+
+              .md-gi-group {
+                & > [class^="gi-"] {
+                  display: none;
+                }
+
+                & > .gi-nm {
+                  display: block;
+                  border-top: 1px solid @divider-on-light;
+                  padding: 8px;
+                  margin: 0;
+                  height: 40px;
+                  width: 100%;
+                  background: @white;
+                  .disk-icon {
+                    margin: 2px 8px 0 0;
+                  }
+                }
+              }
+
+            }
+          }
+        }
+      }
+
+      // 显示对应信息
+      .md-disk-data {
+        display: none;
+      }
+    }
+  }
+}
+
+// 移动环境下
+@media screen {
+  @media (max-width: 900px) {
+
+    .md-disk {
+
+      .md-disk-top-bg {
+        display: none;
+      }
+
+      .md-disk-container {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: none;
+
+        .md-disk-body {
+
+          .md-disk-grid {
+
+            .md-disk-grid-title {
+              .md-disk-gt-cell {
+                display: none;
+                &:first-child {
+                  width: 60%;
+                  display: block;
+                }
+                &:last-child {
+                  width: 40%;
+                  display: block;
+                }
+              }
+            }
+
+            .md-disk-grid-body {
+              right: -10px;
+              padding: 0px;
+              .md-disk-grid-item {
+
+                .md-gi-group {
+
+                  & > [class^="gi-"] {
+                    display: none;
+                    &:first-child {
+                      width: 60%;
+                      display: block;
+                    }
+                    &:last-child {
+                      width: 40%;
+                      display: block;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.grid {
+            .md-disk-header {
+              background: rgba(0, 0, 0, 0.05);
+            }
+            .md-disk-grid {
+              .md-disk-grid-body {
+                right: -10px;
+                padding: 0px;
+                .md-disk-grid-item {
+                  width: calc(~"50% - 16px");
+                  margin: 16px 8px;
+                  .md-disk-gi-preview {
+                    width: 100%;
+                  }
+
+                  .md-gi-group {
+
+                    & > [class^="gi-"] {
+                      display: none;
+                      &:first-child {
+                        width: 100%;
+                        display: block;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .md-disk-header {
+          padding: 4px 8px;
+          @menu-w : @menu-item-w;
+          .disk-path {
+            padding-left: 48px;
+            width: calc(~"100% - @{menu-w}");
+            .disk-path-obj {
+              display: none;
+              margin-right: 0;
+              &:after {
+                display: none;
+              }
+              &:last-child {
+                display: block;
+                position: relative;
+                &:before {
+                  left: -36px;
+                  top: 12px;
+                  width: 24px;
+                  text-align: center;
+                  display: inline-block;
+                  font: normal normal normal 14px/1 'Material Design Iconic Font';
+                  font-size: 24px;
+                  font-weight: 100;
+                  text-rendering: auto;
+                  -webkit-font-smoothing: antialiased;
+                  position: absolute;
+                  color: @icon-on-light;
+                  content: '\f2b5';
+                }
+              }
+              &:first-child {
+                &:before {
+                  left: -36px;
+                  top: 12px;
+                  width: 24px;
+                  text-align: center;
+                  display: inline-block;
+                  font: normal normal normal 14px/1 'Material Design Iconic Font';
+                  font-size: 24px;
+                  font-weight: 100;
+                  text-rendering: auto;
+                  -webkit-font-smoothing: antialiased;
+                  position: absolute;
+                  color: @icon-on-light;
+                  content: '\f15e';
+                }
+              }
+            }
+          }
+
+          .disk-menu {
+            width: @menu-w;
+
+            .disk-menu-item {
+              display: none;
+            }
+
+            .disk-menu-item:first-child {
+              display: block;
+            }
+          }
+        }
+
+        .md-disk-body {
+        }
+      }
+
+    }
+
+  }
+}

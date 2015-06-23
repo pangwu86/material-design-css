@@ -1,0 +1,97 @@
+@charset "UTF-8";
+.paper {
+  overflow: hidden;
+}
+.paper.rounded {
+  border-radius: 2px;
+}
+.paper.circle {
+  border-radius: 50%;
+}
+.paper.z-depth-0 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+.paper.z-depth-1 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24), 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+.paper.z-depth-2 {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 15px rgba(0, 0, 0, 0.16);
+}
+.paper.z-depth-3 {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
+}
+.paper.z-depth-4 {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.22), 0 14px 45px rgba(0, 0, 0, 0.25);
+}
+.paper.z-depth-5 {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3);
+}
+.md-menu {
+  position: absolute;
+  z-index: 5000;
+  width: 160px;
+  padding: 4px 0;
+  background: #ffffff;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
+}
+.md-menu.rounded {
+  border-radius: 2px;
+}
+.md-menu.circle {
+  border-radius: 50%;
+}
+.md-menu.z-depth-0 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+.md-menu.z-depth-1 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24), 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+.md-menu.z-depth-2 {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 15px rgba(0, 0, 0, 0.16);
+}
+.md-menu.z-depth-3 {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
+}
+.md-menu.z-depth-4 {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.22), 0 14px 45px rgba(0, 0, 0, 0.25);
+}
+.md-menu.z-depth-5 {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3);
+}
+.md-menu.align-right {
+  right: 0;
+}
+.md-menu > li {
+  padding: 8px 16px;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.md-menu > li.divider {
+  height: 1px;
+  line-height: 1px;
+  width: 100%;
+  padding: 0;
+  margin: 2px 0;
+  background: rgba(0, 0, 0, 0.12);
+}
+.md-menu > li.active:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #000;
+}
+.md-menu > li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.12);
+}

@@ -27,7 +27,7 @@ $(document).ready(function () {
             }
         },
         closeQuick: false
-    }, _md_page_home_ || {});
+    }, window._md_page_home_ || {});
 
 
     var mphome = {
@@ -180,6 +180,15 @@ $(document).ready(function () {
         }
     };
 
+    mphome.header = {
+        'asHeader': function () {
+            mphome.components.header.removeClass('notHeader');
+        },
+        'notHeader': function () {
+            mphome.components.header.addClass('notHeader');
+        }
+    }
+
     mphome.module = {
         'showLabel': function (ltxt) {
             var lbnm = mphome.components.modulelabel.attr('labelBlock');
@@ -213,11 +222,12 @@ $(document).ready(function () {
                 mphome.components.extSwtich.addClass('open');
                 mphome.components.extSwtichOff.addClass('open');
                 mphome.nav.close();
-                mphome.components.navBtnGroup.addClass('close');
+                // 当前显示的tab获得焦点 FIXME 暂时直接找到input进行focus
+                mphome.components.extTabViewpage.find('.ext-tab-container.active input').focus();
                 setTimeout(function () {
                     mphome.components.ext.addClass('open');
                 }, 10)
-            }, 10)
+            }, 10);
         },
         'close': function () {
             if (mphome.components.extSwtich.hasClass('open')) {
@@ -228,7 +238,6 @@ $(document).ready(function () {
                     mphome.components.ext.hide();
                 }, 1000)
                 mphome.mainOverlay.close();
-                mphome.components.navBtnGroup.removeClass('close');
             }
         },
         'makeExtBtnHtml': function (tabs) {
@@ -377,11 +386,7 @@ $(document).ready(function () {
                 if (ni.type == 'url') {
                     navhtml += ' url="' + ni.url + '" ';
                     if (ni.args) {
-                        var argsStr = '';
-                        for (var k in ni.args) {
-                            argsStr += "&" + k + "=" + ni.args[k];
-                        }
-                        navhtml += ' args="' + argsStr.substr(1) + '"';
+                        navhtml += ' args="' + ni.args + '"';
                     }
                 } else if (ni.type == 'action') {
                     navhtml += ' action="' + ni.action + '"';
@@ -469,27 +474,17 @@ $(document).ready(function () {
             // 显示加载动画
 
             var isEssApp = !(url[0] == '/');   // 不是以 '/' 开头, 则为app名称
-            // ess的app, 格式为app/id:xxxxx
             if (isEssApp) {
-                // TODO
-                var si = url.indexOf('/');
-                var appname = null;
-                var obj = null;
-                if (si != -1) {
-                    appname = url.substr(0, si);
-                    // 获取obj对象
-                    var objId = url.substr(si + 1);
-                    obj = $http.syncGet("/o/get/" + objId).data;
-                } else {
-                    appname = url;
+                // TODO 暂时这样搞, 后面再开放接口
+                page = "/a/open/" + url;
+                if (navItem.args) {
+                    url += navItem.args;
+                    page += navItem.args;
                 }
-                args = {};
-                args.appname = appname;
-                args.obj = obj;
             }
             // 普通页面,  格式为/xxx/xxxx?a=b&c=d
             else {
-                page = url;
+                page = hconf.page_setting.page_rs + url;
                 if (navItem.args) {
                     url += "?" + navItem.args;
                     args = mphome.urlArgs(navItem.args);
@@ -500,11 +495,15 @@ $(document).ready(function () {
             mphome.module.showLabel(navItem.label);
             // 设置新的href
             window.location.href = (lhi > 0 ? lochref.substr(0, lhi) : lochref) + "#" + url;
-            page = hconf.page_setting.page_rs + page;
 
+
+            // header恢复默认样式
+            mphome.components.main.html("");
+            mphome.header.asHeader();
+            
             var html = "";
             // 独立页面
-            if (navItem.page) {
+            if (navItem.page == "true") {
                 html += '<iframe src="' + page + '"></iframe>';
                 mphome.components.main.html(html);
             }
@@ -747,15 +746,28 @@ $(document).ready(function () {
 
                 // 初始化, 判断当前url
                 var $a = null;
-                var cui = location.href.indexOf('#');
+                var cui = window.location.href.indexOf('#');
                 var args = null;
                 if (cui != -1) {
                     var url = window.location.href.substr(cui + 1);
-                    var qi = url.indexOf('?');
-                    // 带着参数吗
-                    if (qi != -1) {
-                        args = url.substr(qi + 1);
-                        url = url.substr(0, qi);
+
+                    var isEssApp = !(url[0] == '/');   // 不是以 '/' 开头, 则为app名称
+                    if (isEssApp) {
+                        // 带着:参数吗
+                        var qi = url.indexOf(':');
+                        if (qi != -1) {
+                            args = url.substr(qi);
+                            url = url.substr(0, qi);
+                        }
+                    }
+                    // 普通页面,  格式为/xxx/xxxx?a=b&c=d
+                    else {
+                        // 带着?参数吗
+                        var qi = url.indexOf('?');
+                        if (qi != -1) {
+                            args = url.substr(qi + 1);
+                            url = url.substr(0, qi);
+                        }
                     }
                     $a = $('a[url="' + url + '"]');
                     if ($a.length > 0) {
@@ -766,6 +778,9 @@ $(document).ready(function () {
                             'page': $a.attr('page')
                         });
                         $a.parent().addClass('active');
+                    } else {
+                        $a = mphome.components.mainMenu.find('li:not(.has-sub-menu) > a').first();
+                        $a.click();
                     }
                 } else {
                     $a = mphome.components.mainMenu.find('li:not(.has-sub-menu) > a').first();

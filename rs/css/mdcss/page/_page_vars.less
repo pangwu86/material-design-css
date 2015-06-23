@@ -1,0 +1,28 @@
+@import "../core/color";
+@import "../core/spacing";
+@import "../core/typography";
+@import "../core/transition";
+@import "../component/effect/shadow";
+@import "../app";
+
+// 常用参数
+@header-h: 56px;
+@side-w: 288px;
+
+// z-index
+// 0- 1000
+@zi-main: @zi-app;
+//@zi-main-overlay : @zi-app + 1;
+@zi-main-overlay : @zi-header + 1;
+// 1000 - 2000
+@zi-header: @zi-system;
+@zi-side-left: @zi-system + 1;
+@zi-side-right: @zi-system + 1;
+
+@zi-ext: @zi-system + 2;
+@zi-fab-mini: @zi-system + 3;
+@zi-fab: @zi-system + 4;
+
+@zi-ext-ol-loading: @zi-system + 5;
+@zi-ext-ol: @zi-system + 6;
+@zi-ext-sys-loading: @zi-system + 7;
