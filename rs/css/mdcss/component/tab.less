@@ -5,12 +5,13 @@
   width: 100%;
   height: @tab-size;
   background-color: @primary-1-color;
-  padding-right: @tab-size;
-  padding-left: @tab-size;
+  padding-right: @tab-size / 2;
+  padding-left: @tab-size/ 2;
   text-align: left;
-  display: table;
+  display: block;
   word-spacing: -1em;
-
+  overflow-y: hidden;
+  overflow-x: auto;
   li {
     display: inline-block;
     cursor: pointer;

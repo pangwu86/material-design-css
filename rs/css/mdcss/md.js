@@ -276,7 +276,7 @@
 
     var tab = {
         calcBottomCss: function ($tabs) {
-            var tleft = 48;
+            var tleft = 24;
             $tabs.find('li').each(function (i, ele) {
                 var $li = $(ele);
                 var tw = ele.offsetWidth;

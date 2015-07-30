@@ -131,7 +131,27 @@
             }
         });
         return re;
-    }
+    };
+
+    http.syncPost = function (url, form) {
+        if (typeof form == "function") {
+            callback = form;
+            form = null;
+        }
+        var re;
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: url,
+            data: form,
+            dataType: "text",
+            processData: true,
+            success: function (text) {
+                re = $z.fromJson(text);
+            }
+        });
+        return re;
+    };
 
     //============================================= XMLHttpRequest
 

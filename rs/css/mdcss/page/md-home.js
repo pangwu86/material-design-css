@@ -500,7 +500,7 @@ $(document).ready(function () {
             // header恢复默认样式
             mphome.components.main.html("");
             mphome.header.asHeader();
-            
+
             var html = "";
             // 独立页面
             if (navItem.page == "true") {
@@ -623,7 +623,7 @@ $(document).ready(function () {
                 $li.addClass('open');
                 mphome.setUlHeight($li.children('ul'));
                 // 其他打开的关闭掉
-                var $siblings = $li.siblings('li.has-sub-menu');
+                var $siblings = $li.siblings('.has-sub-menu.open');
                 if ($siblings.length > 0) {
                     $siblings.removeClass('open');
                     mphome.clearUlHeight($siblings.children('ul'));
@@ -750,7 +750,6 @@ $(document).ready(function () {
                 var args = null;
                 if (cui != -1) {
                     var url = window.location.href.substr(cui + 1);
-
                     var isEssApp = !(url[0] == '/');   // 不是以 '/' 开头, 则为app名称
                     if (isEssApp) {
                         // 带着:参数吗
@@ -771,13 +770,25 @@ $(document).ready(function () {
                     }
                     $a = $('a[url="' + url + '"]');
                     if ($a.length > 0) {
+                        // TODO 如果匹配上了多个?看看参数
+                        var $realA = $a;
+                        if ($a.length > 1) {
+                            $a.each(function (i) {
+                                var $ele = $(this);
+                                if ($ele.attr('args') == args) {
+                                    $realA = $ele;
+                                    return false;
+                                }
+                            });
+                        }
                         mphome.nav.navUrl({
                             'url': url,
-                            'label': $a.attr('label'),
+                            'label': $realA.attr('label'),
                             'args': args,
-                            'page': $a.attr('page')
+                            'page': $realA.attr('page')
                         });
-                        $a.parent().addClass('active');
+                        $realA.parent().addClass('active');
+                        $a = $realA;
                     } else {
                         $a = mphome.components.mainMenu.find('li:not(.has-sub-menu) > a').first();
                         $a.click();
