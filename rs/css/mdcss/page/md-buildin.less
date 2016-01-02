@@ -1,0 +1,22 @@
+@import "_page_vars";
+
+.md-message {
+  position: fixed;
+  z-index: @zi-masker + 1000;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 32px;
+  background: @white;
+  margin: 0 auto;
+
+  .md-message-content {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: @font-size-h5;
+    color: @black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDCSS Build-In</title>
+    <!--依赖-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/font-md/css/material-design-iconic-font.css">
+    <script src="../rs/js/jquery.js"></script>
+    <script src="../rs/js/zutil.js"></script>
+    <!--MDCSS-->
+    <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/md.css">
+    <script src="../rs/css/mdcss/md.js"></script>
+    <link rel="stylesheet" type="text/css" href="../rs/css/mdcss/page/md-buildin.css">
+    <script src="../rs/css/mdcss/page/md-buildin.js"></script>
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <style>
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#msg0').on('click', function(){
+                $mp.message('啊');
+            })
+            $('#msg1').on('click', function(){
+                $mp.message('你可以看到这条信息吧');
+            })
+            $('#msg2').on('click', function(){
+                $mp.message('你可以看到这条信息吧, 不过这条信息的字非常多, 你应该看不全才对的呀, 哈哈哈哈哈');
+            })
+        });
+    </script>
+</head>
+<body>
+<h1>Build-In</h1>
+
+<div class="example">
+    <div class="tip">Message</div>
+    <div class="row">
+        <button class="md-button raised-button" id="msg0">
+            <span class="md-button-label">显示一个字</span>
+        </button>
+        <button class="md-button raised-button" id="msg1">
+            <span class="md-button-label">显示message信息</span>
+        </button>
+        <button class="md-button raised-button" id="msg2">
+            <span class="md-button-label">显示字特别多的信息</span>
+        </button>
+    </div>
+</div>
+
+<div class="example-code">
+</div>
+</body>
+</html>
