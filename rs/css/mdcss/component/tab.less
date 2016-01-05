@@ -1,3 +1,6 @@
+@import "/Users/pw/gitrep/nutz-project/walnut/ROOT/rs/core/css/mdcss/core/util";
+@import "/Users/pw/gitrep/nutz-project/walnut/ROOT/rs/core/css/mdcss/app";
+@import "/Users/pw/gitrep/nutz-project/walnut/ROOT/rs/core/css/mdcss/core/transition";
 @tab-size: 48px;
 
 .md-tab-group {
@@ -12,8 +15,13 @@
   word-spacing: -1em;
   overflow-y: hidden;
   overflow-x: auto;
+  .clearfix;
+
   li {
-    display: inline-block;
+    display: block;
+    float: left;
+    min-width: 80px;
+    padding: 0 12px;
     cursor: pointer;
     overflow: hidden;
     word-spacing: 0;
@@ -27,9 +35,10 @@
     .ripple-button {
       line-height: @tab-size;
       font-size: @font-size-h4;
+      font-weight: bold;
       color: @min-white;
-      padding: 0 24px;
       position: relative;
+      text-align: center;
 
       .touch-ripple {
         background: rgba(255, 255, 255, 0.1);

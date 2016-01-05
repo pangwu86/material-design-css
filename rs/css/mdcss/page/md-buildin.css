@@ -20,22 +20,105 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Roboto, 'Hiragino Sans GB', "Helvetica Neue", Helvetica, Arial, Tahoma, "Microsoft YaHei", SimSun, sans-serif;
 }
-.md-message {
+.paper {
+  overflow: hidden;
+}
+.paper.rounded {
+  border-radius: 2px;
+}
+.paper.circle {
+  border-radius: 50%;
+}
+.paper.z-depth-0 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+.paper.z-depth-1 {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24), 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+.paper.z-depth-2 {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 15px rgba(0, 0, 0, 0.16);
+}
+.paper.z-depth-3 {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.23), 0 10px 30px rgba(0, 0, 0, 0.19);
+}
+.paper.z-depth-4 {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.22), 0 14px 45px rgba(0, 0, 0, 0.25);
+}
+.paper.z-depth-5 {
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.22), 0 19px 60px rgba(0, 0, 0, 0.3);
+}
+.md-buildin {
   position: fixed;
   z-index: 3000;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 32px;
-  background: #ffffff;
-  margin: 0 auto;
 }
-.md-message .md-message-content {
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
+.md-buildin-bg {
+  position: absolute;
+  z-index: 2999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.26);
+}
+.md-buildin-bg.transparent {
+  background: rgba(0, 0, 0, 0);
+}
+.md-buildin-content {
+  height: 40px;
+  line-height: 40px;
   font-size: 13px;
   color: #000000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.md-buildin-input {
+  height: 40px;
+  line-height: 40px;
+  font-size: 13px;
+  width: 100%;
+  padding: 0 8px;
+}
+.md-message {
+  background: #000000;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+.md-message .md-buildin-content {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+.md-confirm,
+.md-prompt,
+.md-win {
+  background: #ffffff;
+  padding: 16px 32px;
+}
+.md-confirm .md-buildin-content,
+.md-prompt .md-buildin-content,
+.md-win .md-buildin-content {
+  margin: 16px 0;
+}
+.md-confirm .md-buildin-input,
+.md-prompt .md-buildin-input,
+.md-win .md-buildin-input {
+  margin: 16px 0;
+}
+.md-win .md-buildin-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.md-buildin-title {
+  height: 48px;
+  line-height: 48px;
+  font-size: 22.75px;
+}
+.md-buildin-btns {
+  text-align: right;
+}
+.md-buildin-btns button {
+  margin-left: 4px;
 }

@@ -20,12 +20,45 @@ body {
   text-rendering: optimizeLegibility;
   font-family: Roboto, 'Hiragino Sans GB', "Helvetica Neue", Helvetica, Arial, Tahoma, "Microsoft YaHei", SimSun, sans-serif;
 }
+html.turbolinks-progress-bar:before {
+  content: " ";
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2000;
+  background-color: #e91e63 !important;
+  height: 3px !important;
+  opacity: 0.99;
+  width: 0%;
+  transform: translate3d(0px, 0px, 0px);
+  transition: width 0ms ease-out, opacity 0ms ease-in;
+}
 body {
   color: rgba(0, 0, 0, 0.87);
   background-color: #f9f9f9;
 }
 body.md-home {
   overflow: hidden;
+}
+body.md-home.show-nav #md-page-header .mp-header-left li:first-child {
+  display: none;
+}
+body.md-home.show-nav #md-page-nav {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  top: 56px;
+  box-shadow: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+body.md-home.show-nav #md-page-main {
+  left: 288px;
+}
+.md-page-tmpl {
+  display: none;
 }
 #md-page-header {
   position: fixed;
@@ -370,15 +403,26 @@ body.md-home {
   position: relative;
   line-height: 48px;
 }
-#md-page-nav .user-profile .user-info .user-avater {
+#md-page-nav .user-profile .user-info .user-avatar {
   border: none;
   float: left;
   width: 48px;
   height: 48px;
   border-radius: 50%;
   margin-right: 16px;
+  overflow: hidden;
+}
+#md-page-nav .user-profile .user-info .user-avatar :hover {
+  cursor: pointer;
+}
+#md-page-nav .user-profile .user-info .user-avatar.default {
   background-image: url("img/home_avater.png");
   background-size: cover;
+}
+#md-page-nav .user-profile .user-info .user-avatar img {
+  width: 48px;
+  height: 48px;
+  display: block;
 }
 #md-page-nav .user-profile .user-info .user-name {
   font-size: 16.25px;
@@ -433,6 +477,7 @@ body.md-home {
   line-height: 24px;
   width: 100%;
   display: block;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -584,6 +629,7 @@ body.md-home {
   line-height: 24px;
   width: 100%;
   display: block;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -736,6 +782,7 @@ body.md-home {
   line-height: 24px;
   width: 100%;
   display: block;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -888,6 +935,7 @@ body.md-home {
   line-height: 24px;
   width: 100%;
   display: block;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;

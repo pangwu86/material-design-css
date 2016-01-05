@@ -2,57 +2,153 @@
 @import "paper";
 @import "../core/color";
 
-@menu-w: 160px;
+@menu-w: 192px;
 
 .md-menu {
   position: absolute;
   z-index: 5000;
-  width: @menu-w;
-  padding: 4px 0;
+  min-width: @menu-w;
+  max-width: @menu-w * 1.5;
+  padding: 8px 0;
   background: @white;
   .paper;
   .rounded;
   .z-depth-3;
+
+  // 需要显示子菜单, 所以不能hidden了
+  overflow: visible;
 
   &.align-right {
     right: 0;
   }
 
   & > li {
-    padding: 8px 16px;
-    width: 100%;
-    display: block;
-    text-decoration: none;
+    cursor: pointer;
     position: relative;
-    color: rgba(0, 0, 0, 0.87);
-    line-height: 24px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+    a {
+      text-decoration: none;
+      padding: 12px 24px 12px 56px;
+      //padding: 6px 24px 6px 56px;
+      color: @text-color;
+      font-weight: 400;
+      text-align: start;
+      font-size: @font-size-h5;
+      line-height: 24px;
+      width: 100%;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .ease-out(@property: color);
+
+      .touch-ripple {
+        background: @flat-button-secondary-ripple-color;
+      }
+
+      & > i {
+        left: 16px;
+        position: absolute;
+        color: @light-black;
+      }
+    }
+
+    &:hover {
+      & > a {
+        background: @flat-button-hover-color;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 4px;
+          height: 100%;
+          background-color: @primary-2-color;
+        }
+      }
+    }
 
     &.divider {
       height: 1px;
       line-height: 1px;
       width: 100%;
       padding: 0;
-      margin: 2px 0;
+      margin: 6px 0;
       background: @divider-on-light;
-    }
-
-    &.active {
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 4px;
-        height: 100%;
-        background-color: @primary-2-color;
+      &:hover {
+        cursor: default;
       }
     }
 
-    &:hover {
-      cursor: pointer;
-      background-color: @divider-on-light;
+    &.active {
+      & > a {
+        background: @flat-button-hover-color;
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 4px;
+          height: 100%;
+          background-color: @primary-2-color;
+        }
+      }
+    }
+
+    &.has-sub-menu {
+      & > a {
+        &:after {
+          content: "\f2c2";
+          position: absolute;
+          right: 0;
+          top: 0;
+          font: normal normal normal 14px/1 'Material Design Iconic Font';
+          font-size: 16px;
+          line-height: 16px;
+          text-align: center;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          width: 16px;
+          height: 16px;
+          color: @light-black;
+          top: 16px;
+          right: 8px;
+          font-weight: bold;
+        }
+
+        &:hover {
+          &:after {
+            color: @dark-black;
+            //color: @primary-2-color;
+          }
+        }
+      }
+
+      ul, ol {
+        display: none;
+      }
+
+      &:hover {
+        ul, ol {
+          display: block;
+          left: 100%;
+          top: 0;
+        }
+      }
+    }
+  }
+
+  // ----------- 去掉icon
+
+  &.no-icon {
+    & > li {
+      a {
+        padding: 12px 24px;
+        & > i {
+          display: none;
+        }
+      }
     }
   }
 }

@@ -26,6 +26,8 @@ $(document).ready(function () {
                 }, 1500);
             }
         },
+        onready: function () {
+        },
         closeQuick: false
     }, window._md_page_home_ || {});
 
@@ -90,7 +92,10 @@ $(document).ready(function () {
         cache: {
             url: {}
         },
-        action: {}
+        action: {},
+        loadPage: function (useIframe, url, args) {
+            mphome.nav.loadMainContainer(useIframe, url, args);
+        }
     };
 
 
@@ -274,6 +279,7 @@ $(document).ready(function () {
             for (var i = 0, ml = tabs.length; i < ml; i++) {
                 var tab = tabs[i];
                 mphome.ext._tabContainerHtml(tab, i, function (html) {
+                    // $container[0].innerHtml = html;
                     $container.append(html);
                 });
             }
@@ -496,14 +502,42 @@ $(document).ready(function () {
             // 设置新的href
             window.location.href = (lhi > 0 ? lochref.substr(0, lhi) : lochref) + "#" + url;
 
+            mphome.nav.loadMainContainer(navItem.page, page, args);
 
-            // header恢复默认样式
-            mphome.components.main.html("");
+            // 关闭nav
+            setTimeout(function () {
+                mphome.nav.close();
+            }, 400);
+        },
+        loadMainContainer: function (sp, page, args) {
+
+            if (window.myDestroy != undefined) {
+                try {
+                    // 先释放
+                    myDestroy();
+                    myDestroy = null;
+                } catch (e) {
+                    console.error("err: " + e);
+                }
+            } else {
+                if (window.dftDestroy) {
+                    try {
+                        // 先释放
+                        dftDestroy();
+                    } catch (e) {
+                        console.error("err: " + e);
+                    }
+                }
+            }
+
+            mphome.components.main.empty();
             mphome.header.asHeader();
+
+            // 再加载与初始化
 
             var html = "";
             // 独立页面
-            if (navItem.page == "true") {
+            if (sp == "true") {
                 html += '<iframe src="' + page + '"></iframe>';
                 mphome.components.main.html(html);
             }
@@ -518,15 +552,11 @@ $(document).ready(function () {
                     html += '});'
                     html += '<' + '/script>';
                     // 添加页面到mview中
-                    // FIXME innerHtml 不会触发事件!
+                    // FIXME innerHtml 不会触发事件! 不会加载js文件
                     // mphome.components.main[0].innerHTML = html;
                     mphome.components.main.html(html);
                 });
             }
-            // 关闭nav
-            setTimeout(function () {
-                mphome.nav.close();
-            }, 400);
         }
     };
 
@@ -816,6 +846,13 @@ $(document).ready(function () {
             });
         });
     });
+
+    // onready
+
+    if (hconf.onready) {
+        hconf.onready();
+    }
+
 
     window.$mp = window.$mp || {};
     window.$mp.home = mphome;

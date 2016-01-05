@@ -45,13 +45,10 @@
     overflow: hidden;
 
     &.obj {
-
-      .md-disk-grid {
-        display: none;
-      }
-
       .md-disk-body {
-
+        .md-disk-grid {
+          display: none;
+        }
         .md-disk-data {
           display: block;
           position: absolute;
@@ -59,20 +56,163 @@
           bottom: 0;
           left: 0;
           right: 0;
+        }
+      }
+      .md-disk-header {
+        .disk-menu-display, .disk-menu-sortby {
+          display: none;
+        }
+      }
+    }
+
+    @disk-info-w: 367px;
+
+    &.info {
+      .md-disk-info {
+        .user-transform(translate3d(0, 0, 0));
+      }
+      .md-disk-body {
+        right: @disk-info-w;
+      }
+    }
+
+    .md-disk-info {
+      display: block;
+      position: absolute;
+      .ease-out();
+      .user-transform(translate3d(@disk-info-w, 0, 0));
+      width: @disk-info-w;
+      top: @header-h;
+      bottom: 0;
+      right: 0;
+      background-color: #fafafa;
+      border-left: 1px solid @divider-on-light;
+      padding: 0 16px;
+      overflow: hidden;
+
+      .title {
+        height: 72px;
+        padding: 20px 0 20px 48px;
+        position: relative;
+        img {
+          width: 32px;
+          height: 32px;
+          display: block;
+          position: absolute;
+          top: 20px;
+          left: 8px;
+        }
+        span {
+          line-height: 32px;
+          height: 32px;
+          display: block;
+          width: 100%;
+          font-size: @font-size-h3;
+          color: @text-on-light;
+          white-space: nowrap;
           overflow: hidden;
-          background: rgba(0, 0, 0, 0.02);
+          text-overflow: ellipsis;
         }
       }
 
-      .md-disk-header {
-        .disk-menu {
-          width: 48px;
-
-          .disk-menu-item {
-            display: none;
+      .tabs {
+        width: 100%;
+        height: 48px;
+        list-style: none;
+        li {
+          display: block;
+          float: left;
+          height: 100%;
+          position: relative;
+          border-top: 1px solid @divider-on-light;
+          & > div {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            line-height: 48px;
           }
-          .disk-menu-item:last-child {
+          &:before {
             display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 4px;
+            right: 0px;
+            left: 0px;
+          }
+
+          &:hover {
+            cursor: pointer;
+            border-top: 1px solid @hint-on-light;
+            &:before {
+              background-color: @hint-on-light;
+            }
+          }
+          &.active {
+            border-top: 1px solid @primary-2-color;
+            &:before {
+              background-color: @primary-2-color;
+            }
+          }
+        }
+      }
+
+      .tab-containers {
+        width: calc(~"100% + 16px");
+        height: calc(~"100% - 120px");
+        padding-right: 16px; // 留给滚动条
+        overflow-y: auto;
+
+        .tc {
+          width: 100%;
+          display: none;
+
+          &.active {
+            display: block;
+          }
+
+          .divider {
+            width: 100%;
+            height: 1px;
+            margin: 24px 0;
+            background-color: @divider-on-light;
+          }
+
+          &.detail {
+            .obj-preview {
+              width: 100%;
+              height: 150px;
+              background-color: @white;
+              border: 1px solid @hint-on-light;
+              border-radius: 2px;
+              // TODO
+              line-height: 150px;
+              text-align: center;
+            }
+            .obj-attrs {
+              width: 100%;
+
+              .obj-attr-row {
+                width: 100%;
+                height: 32px;
+                padding: 4px 0;
+              }
+              .key {
+                width: 100px;
+                line-height: 24px;
+                height: 24px;
+                float: left;
+              }
+              .val {
+                width: calc(~"100% - 100px");
+                float: left;
+                line-height: 24px;
+                height: 24px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
           }
         }
       }
@@ -87,6 +227,10 @@
     }
 
     .md-disk-header {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       position: absolute;
       height: @header-h;
       top: 0;
@@ -157,16 +301,8 @@
       }
 
       // 菜单
-      .disk-menu-switch {
-        display: none;
-        float: right;
-        width: @menu-item-w;
-        height: 100%;
-      }
-
       .disk-menu {
         float: right;
-        width: @menu-w;
         height: 100%;
         display: inline-block;
       }
@@ -207,18 +343,81 @@
           .ease-out(@property: color);
         }
 
-        .disk-menu-nm {
-          display: none;
+        // display模式
+        &.disk-menu-display {
+          i:first-child {
+            display: none;
+          }
+          i:last-child {
+            display: block;
+          }
+          &.grid {
+            i:first-child {
+              display: block;
+            }
+            i:last-child {
+              display: none;
+            }
+          }
         }
+
       }
     }
 
     .md-disk-body {
+      .ease-out();
       position: absolute;
       top: @header-h;
       bottom: 0;
       left: 0;
       right: 0;
+
+      .md-disk-tip {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: @white;
+
+        ._tip {
+          height: 36px;
+          padding: 0 12px;
+          line-height: 36px;
+          font-size: @font-size-h3;
+          color: @hint-on-light;
+          text-align: center;
+          margin: 150px auto;
+          display: none;
+        }
+
+        .loading {
+          ._tip;
+        }
+
+        .empty {
+          ._tip;
+        }
+      }
+
+      &.loading {
+        .md-disk-tip {
+          display: block;
+          .loading {
+            display: block;
+          }
+        }
+      }
+
+      &.empty {
+        .md-disk-tip {
+          display: block;
+          .empty {
+            display: block;
+          }
+        }
+      }
 
       ._md-disk-cell {
         display: block;
@@ -238,20 +437,19 @@
         width: 100%;
         height: 100%;
         position: relative;
-
         @grid-row-h: 48px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 
         .md-disk-grid-title {
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;;
           position: absolute;
           top: 0;
           height: @grid-row-h;
           left: 0;
           right: -20px;
-          overflow-y: scroll;
+          overflow: hidden;
           background: rgba(0, 0, 0, 0.05);
           border-bottom: 1px solid @faint-black;
 
@@ -315,30 +513,26 @@
             border-bottom: 1px solid @faint-black;
             overflow: hidden;
 
-            &.active {
-              &:before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 4px;
-                height: 100%;
-                background-color: @primary-2-color;
-              }
-            }
-
             &:hover {
               background-color: @divider-on-light;
-
               .gi-nm {
                 text-decoration: underline;
                 cursor: pointer;
               }
             }
 
+            &.active {
+              background-color: @primary-1-color;
+              color: @white;
+              &:hover {
+                background-color: @primary-1-color;
+              }
+            }
+
             .md-disk-gi-preview {
               background-size: cover;
               display: none;
+              background-color: @white;
             }
 
             .md-gi-group {
@@ -362,7 +556,6 @@
           .md-disk-grid-title {
             display: none;
           }
-
           .md-disk-grid-body {
             top: 0;
             padding: 0 24px;
@@ -375,6 +568,7 @@
               .ease-out(@property: box-shadow);
               margin: 24px 12px;
               background: rgba(0, 0, 0, 0.02);
+              border: 1px solid @white;
 
               &.active {
                 border: 1px solid @primary-1-color;
@@ -383,7 +577,8 @@
                 }
                 .md-gi-group {
                   & > .gi-nm {
-                    color: @text-on-light;
+                    color: @white;
+                    background-color: @primary-1-color;
                   }
                 }
 
@@ -450,8 +645,17 @@
         right: 0;
         box-shadow: none;
 
-        .md-disk-body {
+        .md-disk-info {
+          display: none;
+        }
 
+        &.info {
+          .md-disk-body {
+            right: 0;
+          }
+        }
+
+        .md-disk-body {
           .md-disk-grid {
 
             .md-disk-grid-title {
@@ -567,7 +771,8 @@
                   -webkit-font-smoothing: antialiased;
                   position: absolute;
                   color: @icon-on-light;
-                  content: '\f15e';
+                  content: '';
+                  //content: '\f15e';
                 }
               }
             }
@@ -586,7 +791,14 @@
           }
         }
 
-        .md-disk-body {
+        &.obj {
+          .md-disk-header {
+            .disk-menu {
+              .disk-menu-item {
+                display: none;
+              }
+            }
+          }
         }
       }
 

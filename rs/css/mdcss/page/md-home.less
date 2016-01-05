@@ -1,6 +1,25 @@
 @import "_page_vars";
 
 // 2000+
+
+html.turbolinks-progress-bar {
+
+  &:before {
+    content: " ";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: @zi-header + 1000;
+    background-color: #e91e63 !important;
+    height: 3px !important;
+    opacity: 0.99;
+    width: 0%;
+    transform: translate3d(0px, 0px, 0px);
+    transition: width 0ms ease-out, opacity 0ms ease-in;
+  }
+}
+
+
 body {
   color: @text-color;
   background-color: @light-background;
@@ -8,6 +27,33 @@ body {
 
 body.md-home {
   overflow: hidden;
+
+  &.show-nav {
+
+    #md-page-header {
+      // left: @side-w;
+      .mp-header-left li:first-child {
+        display: none;
+      }
+    }
+
+    #md-page-nav {
+      .user-transform(translate3d(0, 0, 0));
+      opacity: 1;
+      top: @header-h;
+      box-shadow: none;
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    #md-page-main {
+      left: @side-w;
+    }
+  }
+
+}
+
+.md-page-tmpl {
+  display: none;
 }
 
 // ---------------------------------------------- header
@@ -32,6 +78,7 @@ body.md-home {
     .ease-out(@property: opacity, @duration: 100ms);
     content: "";
     background-color: @white;
+    //background-color: #e91e63;
     position: absolute;
     top: 0;
     left: 0;
@@ -329,15 +376,29 @@ body.md-home {
       position: relative;
       line-height: @up-size;
 
-      .user-avater {
+      .user-avatar {
         border: none;
         float: left;
         width: @up-size;
         height: @up-size;
         border-radius: 50%;
         margin-right: 16px;
-        background-image: url("img/home_avater.png");
-        background-size: cover;
+        overflow: hidden;
+
+        :hover {
+          cursor: pointer;
+        }
+
+        &.default {
+          background-image: url("img/home_avater.png");
+          background-size: cover;
+        }
+
+        img {
+          width: @up-size;
+          height: @up-size;
+          display: block;
+        }
       }
 
       .user-name {
@@ -399,6 +460,7 @@ body.md-home {
         line-height: 24px;
         width: 100%;
         display: block;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
 

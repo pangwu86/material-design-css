@@ -1,0 +1,227 @@
+@charset "UTF-8";
+.clearfix {
+  display: block;
+  zoom: 1;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.md-w10 {
+  width: 10%;
+}
+.md-w20 {
+  width: 20%;
+}
+.md-w30 {
+  width: 30%;
+}
+.md-w40 {
+  width: 40%;
+}
+.md-w50 {
+  width: 50%;
+}
+.md-w60 {
+  width: 60%;
+}
+.md-w70 {
+  width: 70%;
+}
+.md-w80 {
+  width: 80%;
+}
+.md-w90 {
+  width: 90%;
+}
+.font-weight-light {
+  font-weight: 300;
+}
+.font-weight-normal {
+  font-weight: 400;
+}
+.font-weight-medium {
+  font-weight: 600;
+}
+.font-style-button {
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+body {
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: Roboto, 'Hiragino Sans GB', "Helvetica Neue", Helvetica, Arial, Tahoma, "Microsoft YaHei", SimSun, sans-serif;
+}
+.md-grid-con {
+  padding: 16px 16px;
+  background: #ffffff;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.md-grid-con .md-grid-row {
+  display: block;
+  zoom: 1;
+}
+.md-grid-con .md-grid-row:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.md-grid-con .md-grid-title {
+  height: 48px;
+  line-height: 48px;
+  font-size: 16.25px;
+  color: rgba(0, 0, 0, 0.87);
+  float: left;
+}
+.md-grid-con .md-grid-title.right {
+  float: right;
+}
+.md-grid-con .md-grid-item {
+  margin: 0 8px;
+  float: left;
+}
+.md-grid-con .md-grid-item.right {
+  float: right;
+}
+.md-grid-con .md-grid-item:first-child {
+  margin-left: 0;
+}
+.md-grid-con .md-grid-item:last-child {
+  margin-right: 0;
+}
+.md-grid-con .md-grid-item > input,
+.md-grid-con .md-grid-item select {
+  padding: 0 8px;
+  color: #f50057;
+  font-size: 13px;
+  width: 200px;
+  border: 1px solid #2196f3;
+  border-radius: 2px;
+  height: 30px;
+  line-height: 30px;
+}
+.md-grid-con .md-grid-item > input.small,
+.md-grid-con .md-grid-item select.small {
+  width: 100px;
+}
+.md-grid-con .md-grid-pagination {
+  height: 30px;
+  line-height: 30px;
+  float: left;
+}
+.md-grid-con .md-grid-pagination.right {
+  float: right;
+}
+.md-grid-con .md-grid-pagination .pagination-btn {
+  user-select: none;
+  float: left;
+  padding: 0 8px;
+  border: 1px solid #dddddd;
+  cursor: not-allowed;
+  color: #999999;
+  background-color: #ffffff;
+  border-right: none;
+}
+.md-grid-con .md-grid-pagination .pagination-btn.press {
+  cursor: pointer;
+  color: #000000;
+}
+.md-grid-con .md-grid-pagination .pagination-btn.press:hover {
+  color: #1976d2;
+}
+.md-grid-con .md-grid-pagination .pagination-btn:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.md-grid-con .md-grid-pagination .pagination-btn:last-child {
+  border-right: 1px solid #dddddd;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.md-grid-con .md-grid-pagination .pagination-info {
+  border: 1px solid #dddddd;
+  float: left;
+  padding: 0 8px;
+  border-right: none;
+}
+.md-grid-con .md-grid {
+  margin: 24px 0;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+}
+.md-grid-con .md-grid thead {
+  width: 100%;
+}
+.md-grid-con .md-grid thead tr {
+  height: 56px;
+}
+.md-grid-con .md-grid thead tr th {
+  font-size: 11.7px;
+  color: rgba(0, 0, 0, 0.54);
+  vertical-align: middle;
+  font-weight: 500;
+  border-width: 1px;
+  border-bottom: 2px solid #f0f0f0;
+  padding: 10px;
+  text-align: left;
+}
+.md-grid-con .md-grid thead tr th:first-child {
+  padding-left: 24px;
+}
+.md-grid-con .md-grid thead tr th:last-child {
+  padding-right: 24px;
+}
+.md-grid-con .md-grid thead tr th.number {
+  text-align: right;
+}
+.md-grid-con .md-grid tbody {
+  width: 100%;
+}
+.md-grid-con .md-grid tbody tr {
+  height: 48px;
+}
+.md-grid-con .md-grid tbody tr td {
+  text-align: left;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 10px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #f0f0f0;
+  white-space: normal;
+}
+.md-grid-con .md-grid tbody tr td:first-child {
+  padding-left: 24px;
+}
+.md-grid-con .md-grid tbody tr td:last-child {
+  padding-right: 24px;
+}
+.md-grid-con .md-grid tbody tr td.number {
+  text-align: right;
+}
+.md-grid-con .md-grid .cell-btn span {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 4px;
+  border: 1px solid #e7e7eb;
+  background-color: #f4f5f9;
+}
+.md-grid-con .md-grid .cell-btn span:hover {
+  cursor: pointer;
+  background: #fafbff;
+}

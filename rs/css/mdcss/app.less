@@ -1,5 +1,5 @@
-@trans-default: all @animation-duration @ease-out-function 0ms;
-
+@import "core/color";
+@import "core/typography";
 // z-index 分布
 // 应用层
 @zi-app: 0;
@@ -34,8 +34,8 @@
 @default-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 
 // buttons
-@button-height: 36px;
-@button-min-width: 88px;
+@button-height: 30px;
+@button-min-width: 20px;
 
 @flat-button-color: @white;
 @flat-button-hover-color: darken(@flat-button-color, 10%);
@@ -69,6 +69,8 @@
 @raised-button-secondary-focus-ripple-color: @raised-button-secondary-ripple-color;
 @raised-button-disabled-color: @raised-button-hover-color;
 @raised-button-disabled-text-color: fade(@raised-button-text-color, 30%);
+
+@md-loading-color: @primary-1-color;
 
 body {
   font-size: @font-size;

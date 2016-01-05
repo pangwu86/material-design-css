@@ -1,22 +1,91 @@
 @import "_page_vars";
+@import "../component/paper";
 
-.md-message {
+@buildin-height: 40px;
+@buildin-padding: 32px;
+
+.md-buildin {
   position: fixed;
   z-index: @zi-masker + 1000;
-  height: 32px;
-  line-height: 32px;
-  padding: 0 32px;
-  background: @white;
-  margin: 0 auto;
+}
 
-  .md-message-content {
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    font-size: @font-size-h5;
-    color: @black;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.md-buildin-bg {
+  position: absolute;
+  z-index: @zi-masker + 1000 - 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: @min-black;
+  &.transparent {
+    background: @transparent;
   }
 }
+
+// 文字内容
+.md-buildin-content {
+  height: @buildin-height;
+  line-height: @buildin-height;
+  font-size: @font-size-h5;
+  color: @black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// 文本输入框
+.md-buildin-input {
+  height: @buildin-height;
+  line-height: @buildin-height;
+  font-size: @font-size-h5;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.md-message {
+  background: @black;
+  height: @buildin-height;
+  line-height: @buildin-height;
+  padding: 0 @buildin-padding;
+  margin: 0 auto;
+  .md-buildin-content {
+    text-align: center;
+    color: @white;
+    font-weight: bold;
+  }
+}
+
+.md-confirm, .md-prompt, .md-win {
+  background: @white;
+  padding: @buildin-padding /2 @buildin-padding;
+  .md-buildin-content {
+    margin: 16px 0;
+  }
+  .md-buildin-input {
+    margin: 16px 0;
+  }
+}
+
+.md-win {
+  .md-buildin-content {
+    //border-top: 1px solid @hint-on-light;
+    //border-bottom: 1px solid @hint-on-light;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+
+.md-buildin-title {
+  height: @buildin-height * 1.2;
+  line-height: @buildin-height * 1.2;
+  font-size: @font-size-h3;
+}
+
+.md-buildin-btns {
+  text-align: right;
+  button {
+    margin-left: 4px;
+  }
+}
+

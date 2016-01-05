@@ -1,8 +1,119 @@
+@charset "UTF-8";
+.clearfix {
+  display: block;
+  zoom: 1;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.md-w10 {
+  width: 10%;
+}
+.md-w20 {
+  width: 20%;
+}
+.md-w30 {
+  width: 30%;
+}
+.md-w40 {
+  width: 40%;
+}
+.md-w50 {
+  width: 50%;
+}
+.md-w60 {
+  width: 60%;
+}
+.md-w70 {
+  width: 70%;
+}
+.md-w80 {
+  width: 80%;
+}
+.md-w90 {
+  width: 90%;
+}
+.font-weight-light {
+  font-weight: 300;
+}
+.font-weight-normal {
+  font-weight: 400;
+}
+.font-weight-medium {
+  font-weight: 600;
+}
+.font-style-button {
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+body {
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  font-family: Roboto, 'Hiragino Sans GB', "Helvetica Neue", Helvetica, Arial, Tahoma, "Microsoft YaHei", SimSun, sans-serif;
+}
 .md-tab-group {
   position: relative;
   width: 100%;
   height: 48px;
-  background-color: #;
-  padding-right: 48px;
-  padding-left: 48px;
+  background-color: #2196f3;
+  padding-right: 24px;
+  padding-left: 24px;
+  text-align: left;
+  word-spacing: -1em;
+  overflow-y: hidden;
+  overflow-x: auto;
+  display: block;
+  zoom: 1;
+}
+.md-tab-group:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.md-tab-group li {
+  display: block;
+  float: left;
+  min-width: 80px;
+  padding: 0 12px;
+  cursor: pointer;
+  overflow: hidden;
+  word-spacing: 0;
+}
+.md-tab-group li.active .ripple-button {
+  color: #ffffff;
+}
+.md-tab-group li .ripple-button {
+  line-height: 48px;
+  font-size: 16.25px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+  position: relative;
+  text-align: center;
+}
+.md-tab-group li .ripple-button .touch-ripple {
+  background: rgba(255, 255, 255, 0.1);
+}
+.md-tab-group .tab-bottom {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff4081;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
