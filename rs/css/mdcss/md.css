@@ -244,7 +244,7 @@ body {
 .md-icon {
   color: #ffffff;
   display: inline-block;
-  font: normal normal normal 14px/1 'Material Design Iconic Font';
+  font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
   font-size: 24px;
   width: 24px;
   height: 24px;
@@ -1914,7 +1914,7 @@ body {
   padding-top: 24px;
 }
 .md-checkbox-field {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 24px;
   width: 100%;
   display: inline-block;
@@ -1930,7 +1930,7 @@ body {
 }
 .md-checkbox-field .checkbox-wrap {
   display: block;
-  float: right;
+  float: left;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -1968,7 +1968,7 @@ body {
   transform: scale(0);
 }
 .md-checkbox-field .checkbox-wrap > .md-icon.checked:before {
-  content: "\f2e1";
+  content: "\f269";
 }
 .md-checkbox-field .checkbox-wrap > .md-icon.unchecked {
   -webkit-transform: scale(1);
@@ -1978,7 +1978,7 @@ body {
   transform: scale(1);
 }
 .md-checkbox-field .checkbox-wrap > .md-icon.unchecked:before {
-  content: "\f2e2";
+  content: "\f26d";
 }
 .md-checkbox-field.has-checked .checkbox-wrap > .md-icon.checked {
   -webkit-transform: scale(1);
@@ -1994,8 +1994,11 @@ body {
   -o-transform: scale(0);
   transform: scale(0);
 }
+.md-checkbox-field.check-left label {
+  float: right;
+}
 .md-checkbox-field.check-left .checkbox-wrap {
-  float: left;
+  float: right;
 }
 .md-table-container {
   padding: 16px 16px;

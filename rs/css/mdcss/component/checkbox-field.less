@@ -1,7 +1,7 @@
 @import "../core/util";
 
 .md-checkbox-field {
-  font-size: 16px;
+  font-size: 13px;
   line-height: 24px;
   width: 100%;
   display: inline-block;
@@ -19,7 +19,7 @@
 
   .checkbox-wrap {
     display: block;
-    float: right;
+    float: left;
     width: @ckb-size;
     height: @ckb-size;
     border-radius: 50%;
@@ -53,7 +53,7 @@
         .user-transform(scale(0));
 
         &:before {
-          content: "\f2e1";
+          content: "\f269";
         }
       }
 
@@ -61,7 +61,7 @@
         .user-transform(scale(1));
 
         &:before {
-          content: "\f2e2";
+          content: "\f26d";
         }
       }
     }
@@ -85,8 +85,11 @@
   // check在左边
 
   &.check-left {
+    label {
+      float: right;
+    }
     .checkbox-wrap {
-      float: left;
+      float: right;
     }
   }
 
